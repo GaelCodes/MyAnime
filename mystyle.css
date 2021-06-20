@@ -1,0 +1,31 @@
+nav {
+    background-color: #1d2c3a!important;
+}
+
+body {
+    background-color: #ffc10742!important;
+}
+
+.bg-banner {
+    background-color: #bf6e0a70!important;
+}
+
+
+.search-btn {
+    top: 0px;
+    right: 0px;
+}
+
+.facebook-icon {
+    color: #3b5998;
+
+}
+
+.comment-list {
+    margin: 20px 0px;
+    list-style: none;
+}
+
+.comment-list li {
+    margin: 10px 0px;
+}
