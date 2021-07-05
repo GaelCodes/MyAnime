@@ -202,7 +202,7 @@ const animes = [{
                 "author": ""
             }
         },
-        "thumbnail": "assets/thumb-konoSuba.png"
+        "thumbnail": "assets/thumb-konosuba.png"
     },
     {
         "titulo": "Dr. Stone",
