@@ -1,13 +1,14 @@
 nav {
-    background-color: #1d2c3a!important;
+    background-color: #1e2a48;
 }
 
 body {
-    background-color: #ffc10742!important;
+    background-color: #11203edb!important;
+    color: #e6e6e6 !important;
 }
 
 .bg-banner {
-    background-color: #bf6e0a70!important;
+    background-color: #3b4b69a8;
 }
 
 .search-btn {
@@ -30,13 +31,30 @@ body {
 
 .aspect-ratio-thumbnail {
     position: relative;
-    background-color: red;
+    background-color: #11203edb;
     width: 100%;
     padding-top: 100%;
 }
 
 .aspect-ratio-thumbnail img,
 .aspect-ratio-thumbnail .card-img-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.aspect-ratio-cartel {
+    /* 9:16 */
+    position: relative;
+    background-color: rgb(15, 7, 49);
+    width: 100%;
+    padding-top: 177.77%;
+}
+
+.aspect-ratio-cartel img,
+.aspect-ratio-cartel .card-img-overlay {
     position: absolute;
     top: 0;
     bottom: 0;
