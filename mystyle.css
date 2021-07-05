@@ -10,7 +10,6 @@ body {
     background-color: #bf6e0a70!important;
 }
 
-
 .search-btn {
     top: 0px;
     right: 0px;
@@ -18,7 +17,6 @@ body {
 
 .facebook-icon {
     color: #3b5998;
-
 }
 
 .comment-list {
@@ -28,4 +26,20 @@ body {
 
 .comment-list li {
     margin: 10px 0px;
+}
+
+.aspect-ratio-thumbnail {
+    position: relative;
+    background-color: red;
+    width: 100%;
+    padding-top: 100%;
+}
+
+.aspect-ratio-thumbnail img,
+.aspect-ratio-thumbnail .card-img-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
