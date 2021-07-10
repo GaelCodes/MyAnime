@@ -7,7 +7,7 @@ var animesEnEmision;
 var lastAnimes;
 var lastEpisodes;
 
-fetch('https://cdn.jsdelivr.net/gh/GaelCodes/MyAnime/DB_Animes/animes-news.json')
+fetch('https://cdn.jsdelivr.net/gh/GaelCodes/MyAnime@v0.1.0/DB_Animes/animes-news.json')
     .then(response => response.json())
     .then(
 
@@ -16,10 +16,6 @@ fetch('https://cdn.jsdelivr.net/gh/GaelCodes/MyAnime/DB_Animes/animes-news.json'
             lastEpisodes = animeNews['lastEpisodes'];
             lastAnimes = animeNews['lastAnimes'];
             animesEnEmision = animeNews['animesEnEmision'];
-
-            console.log(animeNews);
-
-
 
             animesEnEmision.forEach(
                 anime => {
