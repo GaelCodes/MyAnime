@@ -1,0 +1,147 @@
+{
+    "titulo": "One Piece",
+    "num": "4",
+    "file": "assets/01-01...",
+    "author": "",
+    "comentarios": [{
+            "author": "yo",
+            "texto": "Buenisimo el capitulo",
+            "respuestas": [{
+                    "author": "elOtro",
+                    "texto": "",
+                    "picture": "imagen guapa"
+                },
+                {
+                    "author": "elOtro",
+                    "texto": "",
+                    "picture": "imagen guapa"
+                },
+                {
+                    "author": "elOtro",
+                    "texto": "",
+                    "picture": "imagen guapa"
+                }
+            ]
+        },
+        {
+            "author": "yo",
+            "texto": "Buenisimo el capitulo",
+            "respuestas": [{
+                    "author": "elOtro",
+                    "texto": "",
+                    "picture": "imagen guapa"
+                },
+                {
+                    "author": "elOtro",
+                    "texto": "",
+                    "picture": "imagen guapa"
+                },
+                {
+                    "author": "elOtro",
+                    "texto": "",
+                    "picture": "imagen guapa"
+                }
+            ]
+        },
+        {
+            "author": "yo",
+            "texto": "Buenisimo el capitulo",
+            "respuestas": [{
+                    "author": "elOtro",
+                    "texto": "",
+                    "picture": "imagen guapa"
+                },
+                {
+                    "author": "elOtro",
+                    "texto": "",
+                    "picture": "imagen guapa"
+                },
+                {
+                    "author": "elOtro",
+                    "texto": "",
+                    "picture": "imagen guapa"
+                }
+            ]
+        },
+        {
+            "author": "yo",
+            "texto": "Buenisimo el capitulo",
+            "respuestas": [{
+                    "author": "elOtro",
+                    "texto": "",
+                    "picture": "imagen guapa"
+                },
+                {
+                    "author": "elOtro",
+                    "texto": "",
+                    "picture": "imagen guapa"
+                },
+                {
+                    "author": "elOtro",
+                    "texto": "",
+                    "picture": "imagen guapa"
+                }
+            ]
+        },
+        {
+            "author": "yo",
+            "texto": "Buenisimo el capitulo",
+            "respuestas": [{
+                    "author": "elOtro",
+                    "texto": "",
+                    "picture": "imagen guapa"
+                },
+                {
+                    "author": "elOtro",
+                    "texto": "",
+                    "picture": "imagen guapa"
+                },
+                {
+                    "author": "elOtro",
+                    "texto": "",
+                    "picture": "imagen guapa"
+                }
+            ]
+        },
+        {
+            "author": "yo",
+            "texto": "Buenisimo el capitulo",
+            "respuestas": [{
+                    "author": "elOtro",
+                    "texto": "",
+                    "picture": "imagen guapa"
+                },
+                {
+                    "author": "elOtro",
+                    "texto": "",
+                    "picture": "imagen guapa"
+                },
+                {
+                    "author": "elOtro",
+                    "texto": "",
+                    "picture": "imagen guapa"
+                }
+            ]
+        },
+        {
+            "author": "yo",
+            "texto": "Buenisimo el capitulo",
+            "respuestas": [{
+                    "author": "elOtro",
+                    "texto": "",
+                    "picture": "imagen guapa"
+                },
+                {
+                    "author": "elOtro",
+                    "texto": "",
+                    "picture": "imagen guapa"
+                },
+                {
+                    "author": "elOtro",
+                    "texto": "",
+                    "picture": "imagen guapa"
+                }
+            ]
+        }
+    ]
+}

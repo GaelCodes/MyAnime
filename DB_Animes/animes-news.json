@@ -1,907 +1,179 @@
 {
-    "last-episodes": [{
+    "lastEpisodes": [{
             "titulo": "One Piece",
             "titulo_": "one_piece",
-            "episodios": {
-                "1": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "2": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "3": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-
-                "4": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "5": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                }
-            },
             "thumbnail": "assets/thumb-one-piece.webp",
-            "reciente": true,
-            "cartel": "cartel-one-piece.jpg"
         },
         {
             "titulo": "Bleach",
             "titulo_": "bleach",
-            "episodios": {
-                "1": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "2": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "3": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                }
-            },
             "thumbnail": "assets/thumb-bleach.jpg"
         },
         {
             "titulo": "Boku no Hero Academy",
             "titulo_": "boku_no_hero_academy",
-            "episodios": {
-                "1": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "2": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "3": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                }
-            },
             "thumbnail": "assets/thumb-boku-no-hero-academy.png"
         },
         {
             "titulo": "Clannad",
             "titulo_": "Clannad",
-            "episodios": {
-                "1": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "2": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "3": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                }
-            },
             "thumbnail": "assets/thumb-clannad.jpg"
         },
         {
             "titulo": "Shakugan no Shana",
             "titulo_": "shakugan_no_shana",
-            "episodios": {
-                "1": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "2": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "3": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                }
-            },
             "thumbnail": "assets/thumb-shakugan-no-shana.jpg"
         },
         {
             "titulo": "Sword Art Online",
             "titulo_": "sword_art_online",
-            "episodios": {
-                "1": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "2": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "3": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                }
-            },
             "thumbnail": "assets/thumb-sword-art-online.webp"
         },
         {
             "titulo": "Naruto Shippuden",
             "titulo_": "naruto_shippuden",
-            "episodios": {
-                "1": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "2": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "3": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                }
-            },
             "thumbnail": "assets/thumb-naruto-shippuden.jpg"
         },
         {
             "titulo": "Mirai Nikki",
             "titulo_": "mirai_nikki",
-            "episodios": {
-                "1": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "2": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "3": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                }
-            },
             "thumbnail": "assets/thumb-mirai-nikki.jpg"
         },
         {
             "titulo": "Kimetsu no Yaiba",
             "titulo_": "kimetsu_no_yaiba",
-            "episodios": {
-                "1": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "2": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "3": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                }
-            },
-            "thumbnail": "assets/thumb-kimetsu-no-yaiba.jpg",
-            "reciente": true,
-            "cartel": "cartel-kimetsu.png"
+            "thumbnail": "assets/thumb-kimetsu-no-yaiba.jpg"
         },
         {
             "titulo": "KonoSuba!",
             "titulo_": "KonoSuba!",
-            "episodios": {
-                "1": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "2": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "3": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                }
-            },
             "thumbnail": "assets/thumb-konosuba.png"
         },
         {
             "titulo": "Dr. Stone",
             "titulo_": "Dr._Stone",
-            "episodios": {
-                "1": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "2": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "3": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                }
-            },
             "thumbnail": "assets/thumb-dr-stone.jpg"
         },
         {
             "titulo": "Mushoku Tensei",
             "titulo_": "mushoku_tensei",
-            "episodios": {
-                "1": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "2": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "3": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                }
-            },
             "thumbnail": "assets/thumb-mushoku-tensei.jpg"
         },
         {
             "titulo": "Tate no Yuusha no Nariagari",
             "titulo_": "Tate no Yuusha no Nariagari",
-            "episodios": {
-                "1": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "2": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "3": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                }
-            },
-            "thumbnail": "assets/thumb-mushoku-tensei.jpg",
-            "reciente": true,
-            "cartel": "cartel-shield-hero.jpeg"
+            "thumbnail": "assets/thumb-mushoku-tensei.jpg"
         },
         {
             "titulo": "Jujutsu Kaisen",
             "titulo_": "Jujutsu Kaisen",
-            "episodios": {
-                "1": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "2": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "3": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                }
-            },
-            "thumbnail": "assets/thumb-mushoku-tensei.jpg",
-            "reciente": true,
-            "cartel": "cartel-jujutsu.jpg"
+            "thumbnail": "assets/thumb-mushoku-tensei.jpg"
         },
         {
             "titulo": "Tensei shitara Slime Datta Ken",
             "titulo_": "Tensei shitara Slime Datta Ken",
-            "episodios": {
-                "1": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "2": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "3": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                }
-            },
-            "thumbnail": "assets/thumb-mushoku-tensei.jpg",
-            "reciente": true,
-            "cartel": "cartel-tensura.jpg"
+            "thumbnail": "assets/thumb-mushoku-tensei.jpg"
         },
         {
             "titulo": "Mahouka Koukou no Rettousei",
             "titulo_": "Mahouka Koukou no Rettousei",
-            "episodios": {
-                "1": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "2": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "3": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                }
-            },
-            "thumbnail": "assets/thumb-mushoku-tensei.jpg",
-            "reciente": true,
-            "cartel": "cartel-mahouka.jpg"
+            "thumbnail": "assets/thumb-mushoku-tensei.jpg"
         },
         {
             "titulo": "Koutetsujou no Kabaneri",
             "titulo_": "Koutetsujou no Kabaneri",
-            "episodios": {
-                "1": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "2": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "3": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                }
-            },
-            "thumbnail": "assets/thumb-mushoku-tensei.jpg",
-            "reciente": true,
-            "cartel": "cartel-koutetsujou.jpg"
+            "thumbnail": "assets/thumb-mushoku-tensei.jpg"
         },
         {
             "titulo": "Haikyuu!!",
             "titulo_": "Haikyuu!!",
-            "episodios": {
-                "1": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "2": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "3": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                }
-            },
-            "thumbnail": "assets/thumb-mushoku-tensei.jpg",
-            "reciente": true,
-            "cartel": "cartel-haikyuu.jpg"
+            "thumbnail": "assets/thumb-mushoku-tensei.jpg"
         },
         {
             "titulo": "Shigatsu wa Kimi no Uso",
             "titulo_": "Shigatsu wa Kimi no Uso",
-            "episodios": {
-                "1": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "2": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "3": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                }
-            },
-            "thumbnail": "assets/thumb-mushoku-tensei.jpg",
-            "reciente": true,
-            "cartel": "cartel-kimi.jpg"
+            "thumbnail": "assets/thumb-mushoku-tensei.jpg"
         },
         {
             "titulo": "Owari no Seraph",
             "titulo_": "Owari no Seraph",
-            "episodios": {
-                "1": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "2": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "3": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                }
-            },
-            "thumbnail": "assets/thumb-mushoku-tensei.jpg",
-            "reciente": true,
-            "cartel": "cartel-owari.png"
+            "thumbnail": "assets/thumb-mushoku-tensei.jpg"
         },
         {
             "titulo": "Log Horizon",
             "titulo_": "Log Horizon",
-            "episodios": {
-                "1": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "2": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "3": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                }
-            },
-            "thumbnail": "assets/thumb-mushoku-tensei.jpg",
-            "reciente": true,
-            "cartel": "cartel-log.jpg"
+            "thumbnail": "assets/thumb-mushoku-tensei.jpg"
         },
         {
             "titulo": "Death Parade",
             "titulo_": "Death Parade",
-            "episodios": {
-                "1": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "2": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "3": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                }
-            },
-            "thumbnail": "assets/thumb-mushoku-tensei.jpg",
-            "reciente": true,
-            "cartel": "cartel-death.png"
+            "thumbnail": "assets/thumb-mushoku-tensei.jpg"
         }
     ],
-    "last-animes": [{
+    "lastAnimes": [{
             "titulo": "One Piece",
-            "titulo_": "one_piece",
-            "episodios": {
-                "1": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "2": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "3": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-
-                "4": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "5": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                }
-            },
-            "thumbnail": "assets/thumb-one-piece.webp",
-            "reciente": true,
             "cartel": "cartel-one-piece.jpg"
         },
         {
-            "titulo": "Bleach",
-            "titulo_": "bleach",
-            "episodios": {
-                "1": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "2": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "3": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                }
-            },
-            "thumbnail": "assets/thumb-bleach.jpg"
-        },
-        {
-            "titulo": "Boku no Hero Academy",
-            "titulo_": "boku_no_hero_academy",
-            "episodios": {
-                "1": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "2": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "3": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                }
-            },
-            "thumbnail": "assets/thumb-boku-no-hero-academy.png"
-        },
-        {
-            "titulo": "Clannad",
-            "titulo_": "Clannad",
-            "episodios": {
-                "1": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "2": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "3": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                }
-            },
-            "thumbnail": "assets/thumb-clannad.jpg"
-        },
-        {
-            "titulo": "Shakugan no Shana",
-            "titulo_": "shakugan_no_shana",
-            "episodios": {
-                "1": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "2": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "3": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                }
-            },
-            "thumbnail": "assets/thumb-shakugan-no-shana.jpg"
-        },
-        {
-            "titulo": "Sword Art Online",
-            "titulo_": "sword_art_online",
-            "episodios": {
-                "1": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "2": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "3": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                }
-            },
-            "thumbnail": "assets/thumb-sword-art-online.webp"
-        },
-        {
-            "titulo": "Naruto Shippuden",
-            "titulo_": "naruto_shippuden",
-            "episodios": {
-                "1": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "2": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "3": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                }
-            },
-            "thumbnail": "assets/thumb-naruto-shippuden.jpg"
-        },
-        {
-            "titulo": "Mirai Nikki",
-            "titulo_": "mirai_nikki",
-            "episodios": {
-                "1": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "2": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "3": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                }
-            },
-            "thumbnail": "assets/thumb-mirai-nikki.jpg"
-        },
-        {
             "titulo": "Kimetsu no Yaiba",
-            "titulo_": "kimetsu_no_yaiba",
-            "episodios": {
-                "1": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "2": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "3": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                }
-            },
-            "thumbnail": "assets/thumb-kimetsu-no-yaiba.jpg",
-            "reciente": true,
             "cartel": "cartel-kimetsu.png"
         },
         {
-            "titulo": "KonoSuba!",
-            "titulo_": "KonoSuba!",
-            "episodios": {
-                "1": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "2": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "3": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                }
-            },
-            "thumbnail": "assets/thumb-konosuba.png"
-        },
-        {
-            "titulo": "Dr. Stone",
-            "titulo_": "Dr._Stone",
-            "episodios": {
-                "1": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "2": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "3": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                }
-            },
-            "thumbnail": "assets/thumb-dr-stone.jpg"
-        },
-        {
-            "titulo": "Mushoku Tensei",
-            "titulo_": "mushoku_tensei",
-            "episodios": {
-                "1": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "2": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "3": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                }
-            },
-            "thumbnail": "assets/thumb-mushoku-tensei.jpg"
-        },
-        {
             "titulo": "Tate no Yuusha no Nariagari",
-            "titulo_": "Tate no Yuusha no Nariagari",
-            "episodios": {
-                "1": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "2": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "3": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                }
-            },
-            "thumbnail": "assets/thumb-mushoku-tensei.jpg",
-            "reciente": true,
             "cartel": "cartel-shield-hero.jpeg"
         },
         {
             "titulo": "Jujutsu Kaisen",
-            "titulo_": "Jujutsu Kaisen",
-            "episodios": {
-                "1": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "2": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "3": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                }
-            },
-            "thumbnail": "assets/thumb-mushoku-tensei.jpg",
-            "reciente": true,
             "cartel": "cartel-jujutsu.jpg"
         },
         {
             "titulo": "Tensei shitara Slime Datta Ken",
-            "titulo_": "Tensei shitara Slime Datta Ken",
-            "episodios": {
-                "1": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "2": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "3": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                }
-            },
-            "thumbnail": "assets/thumb-mushoku-tensei.jpg",
-            "reciente": true,
             "cartel": "cartel-tensura.jpg"
         },
         {
             "titulo": "Mahouka Koukou no Rettousei",
-            "titulo_": "Mahouka Koukou no Rettousei",
-            "episodios": {
-                "1": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "2": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "3": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                }
-            },
-            "thumbnail": "assets/thumb-mushoku-tensei.jpg",
-            "reciente": true,
             "cartel": "cartel-mahouka.jpg"
         },
         {
             "titulo": "Koutetsujou no Kabaneri",
-            "titulo_": "Koutetsujou no Kabaneri",
-            "episodios": {
-                "1": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "2": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "3": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                }
-            },
-            "thumbnail": "assets/thumb-mushoku-tensei.jpg",
-            "reciente": true,
             "cartel": "cartel-koutetsujou.jpg"
         },
         {
             "titulo": "Haikyuu!!",
-            "titulo_": "Haikyuu!!",
-            "episodios": {
-                "1": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "2": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "3": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                }
-            },
-            "thumbnail": "assets/thumb-mushoku-tensei.jpg",
-            "reciente": true,
             "cartel": "cartel-haikyuu.jpg"
         },
         {
             "titulo": "Shigatsu wa Kimi no Uso",
-            "titulo_": "Shigatsu wa Kimi no Uso",
-            "episodios": {
-                "1": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "2": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "3": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                }
-            },
-            "thumbnail": "assets/thumb-mushoku-tensei.jpg",
-            "reciente": true,
+
             "cartel": "cartel-kimi.jpg"
         },
         {
             "titulo": "Owari no Seraph",
-            "titulo_": "Owari no Seraph",
-            "episodios": {
-                "1": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "2": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "3": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                }
-            },
-            "thumbnail": "assets/thumb-mushoku-tensei.jpg",
-            "reciente": true,
+
             "cartel": "cartel-owari.png"
         },
         {
             "titulo": "Log Horizon",
-            "titulo_": "Log Horizon",
-            "episodios": {
-                "1": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "2": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "3": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                }
-            },
-            "thumbnail": "assets/thumb-mushoku-tensei.jpg",
-            "reciente": true,
+
             "cartel": "cartel-log.jpg"
         },
         {
             "titulo": "Death Parade",
-            "titulo_": "Death Parade",
-            "episodios": {
-                "1": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "2": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                },
-                "3": {
-                    "file": "assets/01-01...",
-                    "author": ""
-                }
-            },
-            "thumbnail": "assets/thumb-mushoku-tensei.jpg",
-            "reciente": true,
             "cartel": "cartel-death.png"
         }
     ],
-    "animes-en-emision": ["Hey", "Its", "me"]
+    "animesEnEmision": [
+        "Boruto",
+        "One Piece",
+        "Dragon Ball",
+        "Boku no hero",
+        "Shingeki no Kyojin",
+        "Naruto",
+        "Bleach",
+        "SAO",
+        "Konosuba",
+        "Another",
+        "Clannad",
+        "School Days"
+    ]
 }
