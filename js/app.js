@@ -28,7 +28,7 @@ fetch('https://cdn.jsdelivr.net/gh/GaelCodes/MyAnime@v0.1.0/DB_Animes/animes-new
 
                     episodesContainer.innerHTML +=
                         `
-                                <a href="episodio.html?anime=${anime.titulo_}&capitulo=24" class="card col-12 col-sm-6 col-md-6 col-lg-3">
+                                <a href="episodio/episodio.html?anime=${anime.titulo_}&capitulo=24" class="card col-12 col-sm-6 col-md-6 col-lg-3">
                                 <div class="aspect-ratio-thumbnail">
                                     <img src="${anime.thumbnail}" class="card-img-top" alt="Image not found">
 
