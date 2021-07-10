@@ -2,7 +2,7 @@
     "lastEpisodes": [{
             "titulo": "One Piece",
             "titulo_": "one_piece",
-            "thumbnail": "assets/thumb-one-piece.webp",
+            "thumbnail": "assets/thumb-one-piece.webp"
         },
         {
             "titulo": "Bleach",

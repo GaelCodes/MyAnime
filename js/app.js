@@ -17,19 +17,21 @@ fetch('https://cdn.jsdelivr.net/gh/GaelCodes/MyAnime/DB_Animes/animes-news.json'
             lastAnimes = animeNews['lastAnimes'];
             animesEnEmision = animeNews['animesEnEmision'];
 
+            console.log(animeNews);
+
+
+
             animesEnEmision.forEach(
                 anime => {
                     simulcastAnimesContainer.innerHTML += `<li>${anime}</li>`
                 }
-            )
+            );
 
-
-            let i = 1;
             lastEpisodes.forEach(
                 anime => {
-                    if (i <= 12) {
-                        episodesContainer.innerHTML +=
-                            `
+
+                    episodesContainer.innerHTML +=
+                        `
                                 <a href="episodio.html?anime=${anime.titulo_}&capitulo=24" class="card col-12 col-sm-6 col-md-6 col-lg-3">
                                 <div class="aspect-ratio-thumbnail">
                                     <img src="${anime.thumbnail}" class="card-img-top" alt="Image not found">
@@ -43,8 +45,7 @@ fetch('https://cdn.jsdelivr.net/gh/GaelCodes/MyAnime/DB_Animes/animes-news.json'
 
                                 </a>
                             `;
-                        i++;
-                    }
+
 
                 }
             );
@@ -65,7 +66,7 @@ fetch('https://cdn.jsdelivr.net/gh/GaelCodes/MyAnime/DB_Animes/animes-news.json'
                             </div>`;
 
                 }
-            )
+            );
 
         })
     .catch(error => {
