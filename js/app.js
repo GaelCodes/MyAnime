@@ -13,9 +13,9 @@ fetch('https://cdn.jsdelivr.net/gh/GaelCodes/MyAnime/DB_Animes/animes-news.json'
 
         animeNews => {
 
-            lastEpisodes = animeNews['last-episodes'];
-            lastAnimes = animeNews['last-animes'];
-            animesEnEmision = animeNews['animes-en-emision'];
+            lastEpisodes = animeNews['lastEpisodes'];
+            lastAnimes = animeNews['lastAnimes'];
+            animesEnEmision = animeNews['animesEnEmision'];
 
             animesEnEmision.forEach(
                 anime => {
