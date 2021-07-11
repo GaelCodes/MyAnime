@@ -19,9 +19,10 @@ var episode;
 
 
 fetch(`https://cdn.jsdelivr.net/gh/GaelCodes/MyAnime@v0.1.4/DB_Animes/${anime_}/cap${num}.json`)
-    .then(response => response.json)
+    .then(response => response.json())
     .then(
         data => {
+            console.log(data);
             episode = data;
             // Pintar titulo y episodio
             title.innerText = `${episode.title} episodio ${episode.num}`
@@ -49,11 +50,11 @@ fetch(`https://cdn.jsdelivr.net/gh/GaelCodes/MyAnime@v0.1.4/DB_Animes/${anime_}/
                      </li>                        
                         `
 
-                    if (comment.respuestas) {
+                    if (comment.responses) {
                         comments.innerHTML += '<ul class="response-list">';
 
 
-                        comment.respuestas.forEach(
+                        comment.responses.forEach(
 
                             response => {
                                 comment.innerHTML +=
