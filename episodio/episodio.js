@@ -11,7 +11,7 @@ var episodio;
 
 
 
-fetch(`https://cdn.jsdelivr.net/gh/GaelCodes/MyAnime@v0.1.2/DB_Animes/${anime_}/cap${capitulo}.json`)
+fetch(`https://cdn.jsdelivr.net/gh/GaelCodes/MyAnime@v0.1.3/DB_Animes/${anime_}/cap${capitulo}.json`)
     .then(
         data => {
             console.log(data);
