@@ -1,145 +1,146 @@
 {
-    "titulo": "One Piece",
+    "title": "One Piece",
     "num": "1",
     "file": "assets/01-01...",
-    "author": "",
+    "author": "GaelCodes",
+    "picture": "imagen guapa",
     "next": "available",
-    "comentarios": [{
+    "comments": [{
             "author": "yo",
-            "texto": "Buenisimo el capitulo",
+            "text": "Buenisimo el capitulo",
             "respuestas": [{
                     "author": "elOtro",
-                    "texto": "",
+                    "text": "",
                     "picture": "imagen guapa"
                 },
                 {
                     "author": "elOtro",
-                    "texto": "",
+                    "text": "",
                     "picture": "imagen guapa"
                 },
                 {
                     "author": "elOtro",
-                    "texto": "",
+                    "text": "",
                     "picture": "imagen guapa"
                 }
             ]
         },
         {
             "author": "yo",
-            "texto": "Buenisimo el capitulo",
+            "text": "Buenisimo el capitulo",
             "respuestas": [{
                     "author": "elOtro",
-                    "texto": "",
+                    "text": "",
                     "picture": "imagen guapa"
                 },
                 {
                     "author": "elOtro",
-                    "texto": "",
+                    "text": "",
                     "picture": "imagen guapa"
                 },
                 {
                     "author": "elOtro",
-                    "texto": "",
+                    "text": "",
                     "picture": "imagen guapa"
                 }
             ]
         },
         {
             "author": "yo",
-            "texto": "Buenisimo el capitulo",
+            "text": "Buenisimo el capitulo",
             "respuestas": [{
                     "author": "elOtro",
-                    "texto": "",
+                    "text": "",
                     "picture": "imagen guapa"
                 },
                 {
                     "author": "elOtro",
-                    "texto": "",
+                    "text": "",
                     "picture": "imagen guapa"
                 },
                 {
                     "author": "elOtro",
-                    "texto": "",
+                    "text": "",
                     "picture": "imagen guapa"
                 }
             ]
         },
         {
             "author": "yo",
-            "texto": "Buenisimo el capitulo",
+            "text": "Buenisimo el capitulo",
             "respuestas": [{
                     "author": "elOtro",
-                    "texto": "",
+                    "text": "",
                     "picture": "imagen guapa"
                 },
                 {
                     "author": "elOtro",
-                    "texto": "",
+                    "text": "",
                     "picture": "imagen guapa"
                 },
                 {
                     "author": "elOtro",
-                    "texto": "",
+                    "text": "",
                     "picture": "imagen guapa"
                 }
             ]
         },
         {
             "author": "yo",
-            "texto": "Buenisimo el capitulo",
+            "text": "Buenisimo el capitulo",
             "respuestas": [{
                     "author": "elOtro",
-                    "texto": "",
+                    "text": "",
                     "picture": "imagen guapa"
                 },
                 {
                     "author": "elOtro",
-                    "texto": "",
+                    "text": "",
                     "picture": "imagen guapa"
                 },
                 {
                     "author": "elOtro",
-                    "texto": "",
+                    "text": "",
                     "picture": "imagen guapa"
                 }
             ]
         },
         {
             "author": "yo",
-            "texto": "Buenisimo el capitulo",
+            "text": "Buenisimo el capitulo",
             "respuestas": [{
                     "author": "elOtro",
-                    "texto": "",
+                    "text": "",
                     "picture": "imagen guapa"
                 },
                 {
                     "author": "elOtro",
-                    "texto": "",
+                    "text": "",
                     "picture": "imagen guapa"
                 },
                 {
                     "author": "elOtro",
-                    "texto": "",
+                    "text": "",
                     "picture": "imagen guapa"
                 }
             ]
         },
         {
             "author": "yo",
-            "texto": "Buenisimo el capitulo",
+            "text": "Buenisimo el capitulo",
             "respuestas": [{
                     "author": "elOtro",
-                    "texto": "",
+                    "text": "",
                     "picture": "imagen guapa"
                 },
                 {
                     "author": "elOtro",
-                    "texto": "",
+                    "text": "",
                     "picture": "imagen guapa"
                 },
                 {
                     "author": "elOtro",
-                    "texto": "",
+                    "text": "",
                     "picture": "imagen guapa"
                 }
             ]
