@@ -28,7 +28,7 @@ fetch('https://cdn.jsdelivr.net/gh/GaelCodes/MyAnime@v0.1.2/DB_Animes/animes-new
 
                     episodesContainer.innerHTML +=
                         `
-                                <a href="episodio/episodio.html?anime=${anime.titulo_}&capitulo=24" class="card col-12 col-sm-6 col-md-6 col-lg-3">
+                                <a href="episodio/episodio.html?anime=${anime.titulo_}&capitulo=24" class="card bg-transparent border-0 p-2 col-12 col-sm-6 col-md-6 col-lg-3">
                                 <div class="aspect-ratio-thumbnail">
                                     <img src="${anime.thumbnail}" class="card-img-top" alt="Image not found">
 
@@ -52,7 +52,7 @@ fetch('https://cdn.jsdelivr.net/gh/GaelCodes/MyAnime@v0.1.2/DB_Animes/animes-new
 
                     lastAnimesContainer.innerHTML +=
                         `
-                            <div class="card col-12 col-sm-6 col-md-6 col-lg-3">
+                            <div class="card bg-transparent border-0 p-2 col-12 col-sm-6 col-md-6 col-lg-3">
                                 <div class="aspect-ratio-cartel">
                                 <img src="assets/${anime.cartel}" class="card-img-top" alt="Image not found">
                                 <div class="card-img-overlay d-flex flex-column justify-content-end align-items-center">
