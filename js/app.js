@@ -7,7 +7,7 @@ var animesEnEmision;
 var lastAnimes;
 var lastEpisodes;
 
-fetch('https://cdn.jsdelivr.net/gh/GaelCodes/MyAnime@v0.1.4/DB_Animes/animes-news.json')
+fetch('https://cdn.jsdelivr.net/gh/GaelCodes/MyAnime@v0.1.5/DB_Animes/animes-news.json')
     .then(response => response.json())
     .then(
 
@@ -28,7 +28,7 @@ fetch('https://cdn.jsdelivr.net/gh/GaelCodes/MyAnime@v0.1.4/DB_Animes/animes-new
 
                     episodesContainer.innerHTML +=
                         `
-                                <a href="episodio/episodio.html?anime=one_piece&capitulo=1" class="card bg-transparent border-0 p-2 col-12 col-sm-6 col-md-6 col-lg-3">
+                                <a href="episodio/episodio.html?anime=${titulo_}&capitulo=${capitulo}" class="card bg-transparent border-0 p-2 col-12 col-sm-6 col-md-6 col-lg-3">
                                 <div class="aspect-ratio-thumbnail">
                                     <img src="${anime.thumbnail}" class="card-img-top" alt="Image not found">
 
