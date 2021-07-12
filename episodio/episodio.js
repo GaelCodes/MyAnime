@@ -18,7 +18,7 @@ var episode;
 
 
 
-fetch(`https://cdn.jsdelivr.net/gh/GaelCodes/MyAnime@v0.1.6/DB_Animes/${anime_}/cap${num}.json`)
+fetch(`https://cdn.jsdelivr.net/gh/GaelCodes/MyAnime@v0.1.7/DB_Animes/${anime_}/cap${num}.json`)
     .then(response => response.json())
     .then(
         data => {
