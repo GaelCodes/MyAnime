@@ -9,6 +9,8 @@ const num = urlParams.get('capitulo');
 const title = document.getElementById('title');
 const video = document.getElementById('video');
 const videoAuthor = document.getElementById('videoAuthor');
+const prevEpisode = document.getElementById('prevEpisode');
+const nextEpisode = document.getElementById('nextEpisode');
 const comments = document.getElementById('comments');
 
 
@@ -18,18 +20,34 @@ var episode;
 
 
 
-fetch(`https://cdn.jsdelivr.net/gh/GaelCodes/MyAnime@v0.1.7/DB_Animes/${anime_}/cap${num}.json`)
+fetch(`https://cdn.jsdelivr.net/gh/GaelCodes/MyAnime/DB_Animes/${anime_}/cap${num}.json`)
     .then(response => response.json())
     .then(
         data => {
-            console.log(data);
+
             episode = data;
             // Pintar titulo y episodio
             title.innerText = `${episode.title} episodio ${episode.num}`
 
-            // Definir video src with author
+            // Definir video src with author + next prev episode
             video.src = episode.file;
             videoAuthor.innerText = episode.author;
+
+
+            if (episode.prev) {
+                prevEpisode.href = episode.prev;
+
+            } else {
+                prevEpisode.setAttribute('disabled', 'disabled')
+            }
+            if (episode.next) {
+                nextEpisode.href = episode.next;
+
+            } else {
+                prevEpisode.setAttribute('disabled', 'disabled');
+            }
+
+
 
             // Mostrar comentarios
             episode.comments.forEach(
