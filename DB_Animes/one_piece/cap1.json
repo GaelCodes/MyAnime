@@ -2,12 +2,13 @@
     "title": "One Piece",
     "num": "1",
     "file": "/assets/one-piece-01 Pressmaster from Pexels.mp4",
-    "author": "GaelCodes",
-    "picture": "https://raw.githubusercontent.com/EvanBacon/anime-lorem/master/assets/dr-stone/Senku_Ishigami_Portrait.png",
+    "author": "Video by Joseph Redfield from Pexels",
+    "authorLink": "https://www.pexels.com/es-es/@inforexplore",
     "next": "available",
     "comments": [{
             "author": "yo",
             "text": "Buenisimo el capitulo",
+            "picture": "https://raw.githubusercontent.com/EvanBacon/anime-lorem/master/assets/dr-stone/Senku_Ishigami_Portrait.png",
             "responses": [{
                     "author": "elOtro",
                     "text": "Mi comentario con mi opinión",
@@ -28,7 +29,8 @@
         {
             "author": "yo",
             "text": "Buenisimo el capitulo",
-            "respuestas": [{
+            "picture": "https://raw.githubusercontent.com/EvanBacon/anime-lorem/master/assets/dr-stone/Senku_Ishigami_Portrait.png",
+            "responses": [{
                     "author": "elOtro",
                     "text": "Mi comentario con mi opinión",
                     "picture": "https://raw.githubusercontent.com/EvanBacon/anime-lorem/master/assets/dr-stone/Senku_Ishigami_Portrait.png"
@@ -48,7 +50,8 @@
         {
             "author": "yo",
             "text": "Buenisimo el capitulo",
-            "respuestas": [{
+            "picture": "https://raw.githubusercontent.com/EvanBacon/anime-lorem/master/assets/dr-stone/Senku_Ishigami_Portrait.png",
+            "responses": [{
                     "author": "elOtro",
                     "text": "Mi comentario con mi opinión",
                     "picture": "https://raw.githubusercontent.com/EvanBacon/anime-lorem/master/assets/dr-stone/Senku_Ishigami_Portrait.png"
@@ -68,7 +71,8 @@
         {
             "author": "yo",
             "text": "Buenisimo el capitulo",
-            "respuestas": [{
+            "picture": "https://raw.githubusercontent.com/EvanBacon/anime-lorem/master/assets/dr-stone/Senku_Ishigami_Portrait.png",
+            "responses": [{
                     "author": "elOtro",
                     "text": "Mi comentario con mi opinión",
                     "picture": "https://raw.githubusercontent.com/EvanBacon/anime-lorem/master/assets/dr-stone/Senku_Ishigami_Portrait.png"
@@ -88,7 +92,8 @@
         {
             "author": "yo",
             "text": "Buenisimo el capitulo",
-            "respuestas": [{
+            "picture": "https://raw.githubusercontent.com/EvanBacon/anime-lorem/master/assets/dr-stone/Senku_Ishigami_Portrait.png",
+            "responses": [{
                     "author": "elOtro",
                     "text": "Mi comentario con mi opinión",
                     "picture": "https://raw.githubusercontent.com/EvanBacon/anime-lorem/master/assets/dr-stone/Senku_Ishigami_Portrait.png"
@@ -108,7 +113,8 @@
         {
             "author": "yo",
             "text": "Buenisimo el capitulo",
-            "respuestas": [{
+            "picture": "https://raw.githubusercontent.com/EvanBacon/anime-lorem/master/assets/dr-stone/Senku_Ishigami_Portrait.png",
+            "responses": [{
                     "author": "elOtro",
                     "text": "Mi comentario con mi opinión",
                     "picture": "https://raw.githubusercontent.com/EvanBacon/anime-lorem/master/assets/dr-stone/Senku_Ishigami_Portrait.png"
@@ -128,7 +134,8 @@
         {
             "author": "yo",
             "text": "Buenisimo el capitulo",
-            "respuestas": [{
+            "picture": "https://raw.githubusercontent.com/EvanBacon/anime-lorem/master/assets/dr-stone/Senku_Ishigami_Portrait.png",
+            "responses": [{
                     "author": "elOtro",
                     "text": "Mi comentario con mi opinión",
                     "picture": "https://raw.githubusercontent.com/EvanBacon/anime-lorem/master/assets/dr-stone/Senku_Ishigami_Portrait.png"

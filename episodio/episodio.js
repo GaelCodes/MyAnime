@@ -34,10 +34,11 @@ fetch(`https://cdn.jsdelivr.net/gh/GaelCodes/MyAnime@v0.1.6/DB_Animes/${anime_}/
             // Mostrar comentarios
             episode.comments.forEach(
                 comment => {
-
-                    comments.innerHTML =
+                    // Inicio comentario
+                    let commentElement = document.createElement('li');
+                    console.log(comment);
+                    commentElement.innerHTML +=
                         `
-                     <li>
                         <div class="d-flex flex-row align-items-center">
                             <div class="flex-shrink-0">
                                 <img src="${comment.picture}" alt="Image not found" class="img-fluid">
@@ -46,20 +47,19 @@ fetch(`https://cdn.jsdelivr.net/gh/GaelCodes/MyAnime@v0.1.6/DB_Animes/${anime_}/
                                 <p class="m-0">${comment.author}</p>
                                 <p class="m-0">${comment.text}</p>
                             </div>
-                        </div>
-                     </li>                        
-                        `
+                        </div>`;
 
+
+                    // Mostrar respuestas a los comentarios
                     if (comment.responses) {
-                        comments.innerHTML += '<ul class="response-list">';
 
+                        let responseListElement = document.createElement('ul');
+                        responseListElement.classList.add("list-unstyled", "ps-4");
 
                         comment.responses.forEach(
 
                             response => {
-                                comment.innerHTML +=
-
-
+                                responseListElement.innerHTML +=
                                     `
                                     <li>
                                         <div class="d-flex flex-row align-items-center">
@@ -72,21 +72,22 @@ fetch(`https://cdn.jsdelivr.net/gh/GaelCodes/MyAnime@v0.1.6/DB_Animes/${anime_}/
                                             </div>
                                         </div>
                                     </li>
-                                    `
+                                    `;
                             }
-                        )
+                        );
 
-                        ;
-                        comments.innerHTML += '</ul>';
+                        commentElement.appendChild(responseListElement);
 
-                    };
+                    }
+
+                    // Fin comentario
+                    comments.appendChild(commentElement);
 
                 });
-
 
         })
     .catch(
         error => {
             console.log(error);
         }
-    )
+    );

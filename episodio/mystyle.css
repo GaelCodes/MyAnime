@@ -16,10 +16,6 @@ body {
     right: 0px;
 }
 
-.facebook-icon {
-    color: #3b5998;
-}
-
 .comment-list {
     margin: 20px 0px;
     list-style: none;
@@ -27,6 +23,10 @@ body {
 
 .comment-list li {
     margin: 10px 0px;
+}
+
+.response-list {
+    padding-left: 2rem;
 }
 
 .aspect-ratio-thumbnail {
