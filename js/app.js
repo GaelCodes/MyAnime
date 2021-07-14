@@ -33,9 +33,9 @@ fetch('https://cdn.jsdelivr.net/gh/GaelCodes/MyAnime/DB_Animes/animes-news.json'
                                     <img src="${anime.thumbnail}" class="card-img-top" alt="Image not found">
 
 
-                                    <div class="card-img-overlay d-flex flex-column justify-content-end">
-                                        <h5 class="card-title text-white">${anime.titulo}</h5>
-                                        <h6 class="card-subtitle mb-2 text-muted">Episodio 10.000</h6>
+                                    <div class="card-img-overlay d-flex flex-column justify-content-end pb-0">
+                                        <h5 class="anime-title card-title text-white">${anime.titulo}</h5>
+                                        <h6 class="badge mb-2 text-dark bg-info">Episodio ${anime.capitulo}</h6>
                                     </div>
                                 </div>
 

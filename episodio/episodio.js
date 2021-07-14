@@ -31,20 +31,20 @@ fetch(`https://cdn.jsdelivr.net/gh/GaelCodes/MyAnime/DB_Animes/${anime_}/cap${nu
 
             // Definir video src with author + next prev episode
             video.src = episode.file;
-            videoAuthor.innerText = episode.author;
+            videoAuthor.innerText = episode.videoAuthor;
 
 
             if (episode.prev) {
                 prevEpisode.href = episode.prev;
 
             } else {
-                prevEpisode.setAttribute('disabled', 'disabled')
+                prevEpisode.classList.add('disabled');
             }
             if (episode.next) {
                 nextEpisode.href = episode.next;
 
             } else {
-                prevEpisode.setAttribute('disabled', 'disabled');
+                nextEpisode.classList.add('disabled');
             }
 
 
@@ -54,7 +54,7 @@ fetch(`https://cdn.jsdelivr.net/gh/GaelCodes/MyAnime/DB_Animes/${anime_}/cap${nu
                 comment => {
                     // Inicio comentario
                     let commentElement = document.createElement('li');
-                    console.log(comment);
+                    commentElement.classList.add('mb-5');
                     commentElement.innerHTML +=
                         `
                         <div class="d-flex flex-row align-items-center">

@@ -2,73 +2,73 @@
     "lastEpisodes": [{
             "titulo": "One Piece",
             "titulo_": "one_piece",
-            "capitulo": "1",
+            "capitulo": "5",
             "thumbnail": "assets/thumb-one-piece.webp"
         },
         {
             "titulo": "Bleach",
             "titulo_": "bleach",
-            "capitulo": "4",
+            "capitulo": "3",
             "thumbnail": "assets/thumb-bleach.jpg"
         },
         {
             "titulo": "Boku no Hero Academy",
             "titulo_": "boku_no_hero_academy",
-            "capitulo": "4",
+            "capitulo": "5",
             "thumbnail": "assets/thumb-boku-no-hero-academy.png"
         },
         {
             "titulo": "Clannad",
             "titulo_": "clannad",
-            "capitulo": "4",
+            "capitulo": "3",
             "thumbnail": "assets/thumb-clannad.jpg"
         },
         {
             "titulo": "Shakugan no Shana",
             "titulo_": "shakugan_no_shana",
-            "capitulo": "4",
+            "capitulo": "2",
             "thumbnail": "assets/thumb-shakugan-no-shana.jpg"
         },
         {
             "titulo": "Sword Art Online",
             "titulo_": "sword_art_online",
-            "capitulo": "4",
+            "capitulo": "3",
             "thumbnail": "assets/thumb-sword-art-online.webp"
         },
         {
             "titulo": "Naruto Shippuden",
             "titulo_": "naruto_shippuden",
-            "capitulo": "4",
+            "capitulo": "2",
             "thumbnail": "assets/thumb-naruto-shippuden.jpg"
         },
         {
             "titulo": "Mirai Nikki",
             "titulo_": "mirai_nikki",
-            "capitulo": "4",
+            "capitulo": "3",
             "thumbnail": "assets/thumb-mirai-nikki.jpg"
         },
         {
             "titulo": "Kimetsu no Yaiba",
             "titulo_": "kimetsu_no_yaiba",
-            "capitulo": "4",
+            "capitulo": "3",
             "thumbnail": "assets/thumb-kimetsu-no-yaiba.jpg"
         },
         {
             "titulo": "KonoSuba!",
             "titulo_": "konosuba",
-            "capitulo": "4",
+            "capitulo": "5",
             "thumbnail": "assets/thumb-konosuba.png"
         },
         {
             "titulo": "Dr. Stone",
             "titulo_": "dr._stone",
-            "capitulo": "4",
+            "capitulo": "3",
             "thumbnail": "assets/thumb-dr-stone.jpg"
         },
         {
             "titulo": "Mushoku Tensei",
             "titulo_": "mushoku_tensei",
-            "capitulo": "4",
+            "capitulo": "2",
             "thumbnail": "assets/thumb-mushoku-tensei.jpg"
         }
     ],

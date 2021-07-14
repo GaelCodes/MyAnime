@@ -61,3 +61,15 @@ body {
     left: 0;
     right: 0;
 }
+
+.comment-list {
+    background-color: rgba(0, 0, 0, 0.158);
+}
+
+.comment-list img {
+    width: 4em;
+}
+
+footer {
+    background-color: rgba(0, 0, 0, 0.438);
+}

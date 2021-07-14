@@ -1,10 +1,10 @@
 {
     "title": "One Piece",
     "num": "1",
-    "file": "/assets/one-piece-01 Pressmaster from Pexels.mp4",
+    "file": "/assets/one-piece-01 Joseph Redfield from Pexels.mp4",
     "videoAuthor": "Video by Joseph Redfield from Pexels",
     "authorLink": "https://www.pexels.com/es-es/@inforexplore",
-    "next": "https://my-anime.abigaelheredia.es/episodio/episodio.html?anime=one_piece&capitulo=2",
+    "next": "./episodio.html?anime=one_piece&capitulo=2",
     "comments": [{
             "author": "yo",
             "text": "Buenisimo el capitulo",

@@ -1,11 +1,11 @@
 {
     "title": "One Piece",
     "num": "3",
-    "file": "/assets/one-piece-01 Pressmaster from Pexels.mp4",
+    "file": "/assets/one-piece-03 Pressmaster en Pexels.mp4",
     "videoAuthor": "Video by Joseph Redfield from Pexels",
     "authorLink": "https://www.pexels.com/es-es/@inforexplore",
-    "prev": "https://my-anime.abigaelheredia.es/episodio/episodio.html?anime=one_piece&capitulo=2",
-    "next": "https://my-anime.abigaelheredia.es/episodio/episodio.html?anime=one_piece&capitulo=4",
+    "prev": "./episodio.html?anime=one_piece&capitulo=2",
+    "next": "./episodio.html?anime=one_piece&capitulo=4",
     "comments": [{
             "author": "yo",
             "text": "Buenisimo el capitulo",
