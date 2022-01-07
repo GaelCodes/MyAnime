@@ -10,9 +10,9 @@ class Subscriber {
     private $conversor;
     private $notifier;
 
-    public function __constructor() {
+    public function __construct() {
         $now = getdate();
-        $this->date = 'Hora: '.$hoy["hours"].':'.$hoy["minutes"].':'.$hoy["seconds"].'   Dia: '.$hoy["mday"].'/'.$hoy["mon"].'/'.$hoy["year"];
+        $this->date = 'Hora: '.$now["hours"].':'.$now["minutes"].':'.$now["seconds"].'   Dia: '.$now["mday"].'/'.$now["mon"].'/'.$now["year"];
     }
 
     public function process_request () {
@@ -50,10 +50,12 @@ class Subscriber {
         $this->conversor->save_json();
         
         // Subo el JSON a Firestore
+        require_once('./firestoreManagerClass.php');
         $this->firestore_manager = new FirestoreManager();
         $this->firestore_manager->upload_data($this->conversor->get_array());
 
         // Notifico a los usuarios vía email
+        require_once('./notifierClass.php');
         $this->notifier = new Notifier();
         $this->notifier->notify_subscribed_users($this->conversor->get_array(), $this->firestore_manager);
         

@@ -6,20 +6,22 @@ class Conversor {
     private $pattern_namespace_empty_tag;
     private $pattern_tags_with_other_tags;
     private $namespaces;
-    private $xml;
+    private $simple_xml;
+    private $json_string;
     private $prepared_xml_string;
     private $formated_xml_string;
     private $outputFile = "./receivedFeeds/feedConverted.json";
 
     public function __construct($xml_string) {
         $this->prepared_xml_string = $this->prepare_xml_string($xml_string);
-        $this->search_namespaces();
+        
     }
 
     public function convert_to_json() {
 
         // Renombro las tag de los distintos namespaces
         // </atom:link href="myLink">    =>    </atomLink href="myLink">
+        $this->search_namespaces();
         foreach ($this->namespaces as $key => $namespaceName) {
 
             $this->pattern_tags_with_namespaceName = '/<('.$namespaceName.'):(\w*)( \w*=".*")* *>(.*)<\/\1:\2>/';
@@ -31,26 +33,26 @@ class Conversor {
 
         // Convierto la string XML en un objeto SimpleXML
         $this->formated_xml_string = $this->prepared_xml_string;
-        $this->xml = simplexml_load_string($this->formated_xml_string);
+        $this->simple_xml = simplexml_load_string($this->formated_xml_string);
 
         // A partir del objeto SimpleXML se puede
         // obtener el json fácilmente
-        $this->jsonString = json_encode($this->xml);
+        $this->json_string = json_encode($this->simple_xml);
     }
 
     public function get_json() {
         if ($this->json_string == null) {
             $this->convert_to_json();
-            return $this->json_string();
+            return $this->json_string;
 
         } else {
-            return $this->json_string();
+            return $this->json_string;
 
         }
     }
 
     public function get_array() {
-        return json_decode($this->get_json());
+        return json_decode($this->get_json(),true);
     }
 
     public function save_json() {
@@ -66,10 +68,13 @@ class Conversor {
     }
 
     private function search_namespaces() {
+        
         preg_match_all(
             $this->pattern_namespaces,
             $this->prepared_xml_string,
-            $this->namespaces);
+            $this->namespaces
+        );
+
         // El nombre del namespace coincide con el
         // segundo grupo del patrón
         $this->namespaces = $this->namespaces[2];
@@ -85,7 +90,7 @@ class Conversor {
 
         $this->prepared_xml_string = preg_replace_callback(
             $this->pattern_tags_with_namespaceName,
-            "XMLToJsonConversor::replace_namespace_tags_with_content",
+            "Conversor::replace_namespace_tags_with_content",
             $this->prepared_xml_string);
     }
 
@@ -93,7 +98,7 @@ class Conversor {
 
         $this->prepared_xml_string = preg_replace_callback(
             $this->pattern_tags_with_other_tags,
-            "XMLToJsonConversor::replace_namespace_tags_with_other_tags",
+            "Conversor::replace_namespace_tags_with_other_tags",
             $this->prepared_xml_string);
     }
 
@@ -101,7 +106,7 @@ class Conversor {
 
         $this->prepared_xml_string = preg_replace_callback(
             $this->pattern_empty_tags_with_namespaceName,
-            "XMLToJsonConversor::replace_namespace_in_empty_tags",
+            "Conversor::replace_namespace_in_empty_tags",
             $this->prepared_xml_string);
     }
 

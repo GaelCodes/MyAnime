@@ -24,11 +24,9 @@ require '../vendor/autoload.php';
 
 // Inicializa una instancia de Cloud Firestore:
 use Google\Cloud\Firestore\FirestoreClient;
-$myUploader = new Uploader();
-$myUploader->retrieve_subscribers();
 
 class FirestoreManager  {
-    private $db;
+    protected $db;
 
     public function __construct() {
         $this->create_db_client("my-anime-499f8");
@@ -60,7 +58,7 @@ class FirestoreManager  {
         printf('Added data to the lovelace document in the users collection.' . PHP_EOL);
     }
 
-    public function retrieve_subscribers(){
+    public function retrieve_subscribers($anime_id){
         $usersRef = $this->db->collection('samples/php/users');
         $snapshot = $usersRef->documents();
         foreach ($snapshot as $user) {

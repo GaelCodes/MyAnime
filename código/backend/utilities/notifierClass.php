@@ -41,10 +41,10 @@ class Notifier {
     public function __construct() {
         
         $this->configuration = [
-            'username' => $_ENV['SMTP_USERNAME'],
-            'password' => $_ENV['SMTP_PASSWORD'],
-            'host' => $_ENV['SMTP_HOST'],
-            'port' => $_ENV['SMTP_PORT'],
+            'username' => $ENV['SMTP_USER'],
+            'password' => $ENV['SMTP_PASSWORD'],
+            'host' => $ENV['SMTP_HOST'],
+            'port' => $ENV['SMTP_PORT'],
             'auth' => true
         ];
 
@@ -52,26 +52,30 @@ class Notifier {
 
     }
     
-    public function notify_subscribers($episode,$firestore_manager) {
-        $subscribers = $firestore_manager->get_subscribed_users();
+    public function notify_subscribers($array_from_xml, $firestore_manager) {
+        $array_episodes = $array_from_xml["channel"]["item"];
 
-        foreach ($subscribers as $subscriber_email) {
-            $email = $this->prepare_email($subscriber_email, $episode);
-            $this->send_email($email);
+        foreach ($array_episodes as $episode) {
+            $subscribers = $firestore_manager->retrieve_subscribers($episode['crunchyrollSeriesTitle']);
 
+            foreach ($subscribers as $subscriber) {
+                $email = $this->prepare_email($subscriber['email'], $episode);
+                $this->send_email($email);
+    
+            }
         }
+
     }
 
     private function prepare_email($subscriber_email, $episode) {
         $prepared_email = $this->default_email;
 
         $prepared_email['headers']['To'] = $subscriber_email;
-        $prepared_email['headers']['Subject'] = 'El episodio '.$episode['number'].' de '.$episode['serieTitle'].' ya está disponible';
+        $prepared_email['headers']['Subject'] = 'El episodio '.$episode['crunchyrollEpisodeNumber'].' de '.$episode['crunchyrollSeriesTitle'].' ya está disponible';
         $prepared_email['body'] = '
-            Hola ^^, ya tienes el episodio número '.$episode['number'].'
-            de '.$episode['serieTitle'].' listo para que lo puedas ver 
-            cuando quieras en la plataforma de '.$episode['platform']
-        ;
+            Hola ^^, ya tienes el episodio número '.$episode['crunchyrollEpisodeNumber'].'
+            de '.$episode['crunchyrollSeriesTitle'].' listo para que lo puedas ver 
+            cuando quieras en la plataforma de Crunchyroll';
         return $prepared_email;
         
     }
