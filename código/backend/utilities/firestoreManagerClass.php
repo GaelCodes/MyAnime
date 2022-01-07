@@ -27,7 +27,7 @@ use Google\Cloud\Firestore\FirestoreClient;
 $myUploader = new Uploader();
 $myUploader->retrieve_subscribers();
 
-class Uploader  {
+class FirestoreManager  {
     private $db;
 
     public function __construct() {

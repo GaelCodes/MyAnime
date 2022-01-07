@@ -1,6 +1,4 @@
 <?php
-$subscriber = new Subscriber();
-$subscriber->process_request();
 
 class Subscriber {
 
@@ -46,18 +44,18 @@ class Subscriber {
                 
         // Convierto el contenido del body de XML a JSON
         // y lo guardo en el output_file del conversor
-        require_once('./myCrunchyrollConversor.php');
-        $this->conversor = new CrunchyrollConversor($this->get_body_content());
+        require_once('./conversorClass.php');
+        $this->conversor = new Conversor($this->get_body_content());
         $this->conversor->convert_to_json();
         $this->conversor->save_json();
         
         // Subo el JSON a Firestore
-        $this->firestore_manager = new CrunchyrollUploader();
-        $this->firestore_manager->upload_json($this->conversor->get_json());
+        $this->firestore_manager = new FirestoreManager();
+        $this->firestore_manager->upload_data($this->conversor->get_array());
 
         // Notifico a los usuarios vía email
-        $this->notifier = new CrunchyrollNotifier();
-        $this->notifier->notify_subscribed_users($this->conversor->get_json(),$this->firestore_manager);
+        $this->notifier = new Notifier();
+        $this->notifier->notify_subscribed_users($this->conversor->get_array(), $this->firestore_manager);
         
         $this->return_ok();
     }

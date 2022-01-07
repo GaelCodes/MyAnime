@@ -49,6 +49,10 @@ class Conversor {
         }
     }
 
+    public function get_array() {
+        return json_decode($this->get_json());
+    }
+
     public function save_json() {
         file_put_contents($this->outputFile,$this->json_string);
     }

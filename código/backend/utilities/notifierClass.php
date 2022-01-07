@@ -1,8 +1,9 @@
 <?php
-require_once "Mail.php";
-
+require_once 'Mail.php';
 
 class Notifier {
+
+    private $log_file = './logs/notifier.log';
 
     private $default_email = [
         'headers' => [
@@ -32,7 +33,9 @@ class Notifier {
             </html>
         '
     ];
+
     private $configuration = [];
+
     private $smtp;
 
     public function __construct() {
@@ -61,15 +64,16 @@ class Notifier {
 
     private function prepare_email($subscriber_email, $episode) {
         $prepared_email = $this->default_email;
+
         $prepared_email['headers']['To'] = $subscriber_email;
         $prepared_email['headers']['Subject'] = 'El episodio '.$episode['number'].' de '.$episode['serieTitle'].' ya está disponible';
-        
         $prepared_email['body'] = '
             Hola ^^, ya tienes el episodio número '.$episode['number'].'
             de '.$episode['serieTitle'].' listo para que lo puedas ver 
             cuando quieras en la plataforma de '.$episode['platform']
         ;
         return $prepared_email;
+        
     }
 
     private function send_email($email) {
@@ -84,6 +88,7 @@ class Notifier {
         }
     }
 
-
-
+    private function set_log($string_to_log) {
+        error_log($string_to_log,3,$this->log_file);
+    }
 }
