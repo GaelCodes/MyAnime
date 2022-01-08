@@ -41,10 +41,10 @@ class Notifier {
     public function __construct() {
         
         $this->configuration = [
-            'username' => $ENV['SMTP_USER'],
-            'password' => $ENV['SMTP_PASSWORD'],
-            'host' => $ENV['SMTP_HOST'],
-            'port' => $ENV['SMTP_PORT'],
+            'username' => $_ENV['SMTP_USER'],
+            'password' => $_ENV['SMTP_PASSWORD'],
+            'host' => $_ENV['SMTP_HOST'],
+            'port' => $_ENV['SMTP_PORT'],
             'auth' => true
         ];
 
