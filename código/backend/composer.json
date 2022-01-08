@@ -2,6 +2,7 @@
     "require": {
         "grpc/grpc": "^1.38",
         "google/cloud-firestore": "^1.20",
-        "google/protobuf": "^3.17"
+        "google/protobuf": "^3.17",
+        "vlucas/phpdotenv": "^5.4"
     }
 }
