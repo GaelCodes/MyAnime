@@ -1,3 +1,52 @@
+/* Inicio pantallas > 576px */
+
+
+/* Inicio header */
+
+
+/* Fin header */
+
+
+/* Inicio body */
+
+#last-animes {
+    list-style: none;
+}
+
+#last-animes .animeCard {
+    border: 1px solid black;
+}
+
+
+/* Fin body */
+
+
+/* Inicio footer */
+
+
+/* Fin footer */
+
+
+/* Fin pantallas > 576px */
+
+
+/* Inicio pantallas entre 576px y 768px */
+
+
+/* Fin pantallas entre 576px y 768px */
+
+
+/* Inicio pantallas entre 768px y 992px */
+
+
+/* Fin pantallas entre 768px y 992px */
+
+
+/* Inicio pantallas entre 992px y 1200px */
+
+
+/* Fin pantallas entre 992px y 1200px */
+
 nav {
     background-color: #1e2a48;
 }
