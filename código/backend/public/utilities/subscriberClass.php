@@ -3,7 +3,7 @@
 class Subscriber {
 
     private $output_file = "./receivedFeeds/feed.xml";
-    private $log_file = "./logs/domain-example.log";
+    private $log_file = "./logs/my-anime.crunchyroll.log";
     private $request_body;
     private $date;
     private $firestore_manager;
@@ -72,14 +72,15 @@ class Subscriber {
     }
 
     public function save_body_content() {
-        file_put_contents(
-            $this->output_file,
-            $this->request_body
-        );
+        $file = fopen($this->output_file, "w") or die("Unable to open file!");
+        fwrite($file, $this->request_body);
+        fclose($file);
     }
 
     private function set_log($string_to_log) {
-        error_log($string_to_log,3,$this->log_file);
+        $file = fopen($this->log_file, "w") or die("Unable to open file!");
+        fwrite($file, $string_to_log);
+        fclose($file);
     }
 
     public function return_OK() {

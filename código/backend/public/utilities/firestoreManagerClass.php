@@ -4,8 +4,8 @@
 // 1
 // 
 // Entorno de desarrollo
-//  Configura la variable de entorno GOOGLE_APPLICATION_CREDENTIALS
-//  $_SERVER["GOOGLE_APPLICATION_CREDENTIALS"] = "path/to/your/keyfile.json";
+//  Configura la variable de entorno GOOGLE_APPLICATION_CREDENTIALS (en el .env file)
+// $_SERVER["GOOGLE_APPLICATION_CREDENTIALS"] = '/path/to/your/my-anime-service-key.json';
 // 
 // Entorno de producción
 //  Configura una cuenta de servicio.
@@ -29,26 +29,17 @@ class FirestoreManager  {
     protected $db;
 
     public function __construct() {
-        $this->create_db_client("my-anime-499f8");
+        $this->create_db_client('my-anime-499f8');
     }
 
     // Initialize Cloud Firestore
-    private function create_db_client(string $projectId = null) {
+    private function create_db_client(string $projectId) {
         // Create the Cloud Firestore client
-        if (empty($projectId)) {
-            // The `projectId` parameter is optional and represents which project the
-            // client will act on behalf of. If not supplied, the client falls back to
-            // the default project inferred from the environment.
-            $this->db = new FirestoreClient();
-            printf('Created Cloud Firestore client with default project ID.' . PHP_EOL);
+        $this->db = new FirestoreClient([
+            'projectId' => $projectId
+        ]);
 
-        } else {
-            $this->db = new FirestoreClient([
-                'projectId' => $projectId,
-            ]);
-            printf('Created Cloud Firestore client with project ID: %s' . PHP_EOL, $projectId);
-
-        }
+        printf('Created Cloud Firestore client with default project ID.' . PHP_EOL);
     }
 
 

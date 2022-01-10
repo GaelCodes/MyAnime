@@ -56,7 +56,9 @@ class Conversor {
     }
 
     public function save_json() {
-        file_put_contents($this->outputFile,$this->json_string);
+        $file = fopen($this->outputFile, "w") or die("Unable to open file!");
+        fwrite($file, $this->json_string);
+        fclose($file);
     }
 
     private function prepare_xml_string($xml_string) {
