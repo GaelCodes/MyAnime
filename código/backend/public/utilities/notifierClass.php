@@ -39,7 +39,7 @@ class Notifier {
     private $smtp;
 
     public function __construct() {
-        
+
         $this->configuration = [
             'username' => $_ENV['SMTP_USER'],
             'password' => $_ENV['SMTP_PASSWORD'],
@@ -52,19 +52,14 @@ class Notifier {
 
     }
     
-    public function notify_subscribers($array_from_xml, $firestore_manager) {
-        $array_episodes = $array_from_xml["channel"]["item"];
+    public function notify_subscribers($episode, $firestore_manager) {
+        $subscribers = $firestore_manager->retrieve_subscribers($episode);
 
-        foreach ($array_episodes as $episode) {
-            $subscribers = $firestore_manager->retrieve_subscribers($episode['crunchyrollSeriesTitle']);
-
-            foreach ($subscribers as $subscriber) {
-                $email = $this->prepare_email($subscriber['email'], $episode);
-                $this->send_email($email);
+        foreach ($subscribers as $subscriber) {
+            $email = $this->prepare_email($subscriber['email'], $episode);
+            $this->send_email($email);
     
-            }
-        }
-
+        }     
     }
 
     private function prepare_email($subscriber_email, $episode) {

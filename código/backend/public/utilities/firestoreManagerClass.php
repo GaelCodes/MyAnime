@@ -20,7 +20,7 @@
 // con el autoloader de composer 
 
 //autoload de composer
-require '../vendor/autoload.php';
+// require '../vendor/autoload.php';
 
 // Inicializa una instancia de Cloud Firestore:
 use Google\Cloud\Firestore\FirestoreClient;

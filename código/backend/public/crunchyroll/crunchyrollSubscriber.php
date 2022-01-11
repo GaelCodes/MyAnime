@@ -1,4 +1,10 @@
 <?php
+
+// // Block Only for development
+// require_once '../vendor/autoload.php'; 
+// $dotenv = Dotenv\Dotenv::createImmutable('./../');
+// $dotenv->safeLoad();
+// // Block Only for development
 require_once '../utilities/subscriberClass.php';
 
 class CrunchyrollSubscriber extends Subscriber {
@@ -24,11 +30,6 @@ class CrunchyrollSubscriber extends Subscriber {
         require_once('./crunchyrollFirestoreManager.php');
         $this->firestore_manager = new CrunchyrollFirestoreManager();
         $this->firestore_manager->upload_data($this->conversor->get_array());
-
-        // Notifico a los usuarios vía email
-        require_once('./crunchyrollNotifier.php');
-        $this->notifier = new CrunchyrollNotifier();
-        $this->notifier->notify_subscribers($this->conversor->get_array(), $this->firestore_manager);
         
         $this->return_ok();
     }

@@ -1,16 +1,16 @@
 <?php
 class Conversor {
 
-    private $pattern_namespaces = '/(xmlns):(\w*)=/';
-    private $pattern_namespace_tag_with_content;
-    private $pattern_namespace_empty_tag;
-    private $pattern_tags_with_other_tags;
-    private $namespaces;
-    private $simple_xml;
-    private $json_string;
-    private $prepared_xml_string;
-    private $formated_xml_string;
-    private $outputFile = "./receivedFeeds/feedConverted.json";
+    protected $pattern_namespaces = '/(xmlns):(\w*)=/';
+    protected $pattern_namespace_tag_with_content;
+    protected $pattern_namespace_empty_tag;
+    protected $pattern_tags_with_other_tags;
+    protected $namespaces;
+    protected $simple_xml;
+    protected $json_string;
+    protected $prepared_xml_string;
+    protected $formated_xml_string;
+    protected $outputFile = "./receivedFeeds/feedConverted.json";
 
     public function __construct($xml_string) {
         $this->prepared_xml_string = $this->prepare_xml_string($xml_string);
@@ -41,6 +41,10 @@ class Conversor {
     }
 
     public function get_json() {
+        // Si todavía no se ha convertido el xml
+        // a una cadena json, lo convierto, si ya se ha hecho
+        // devuelvo la cadena directamente
+
         if ($this->json_string == null) {
             $this->convert_to_json();
             return $this->json_string;
