@@ -91,6 +91,7 @@ class Anime {
     constructor(title, versions, platform, description, audio, subtitles, smallImgUrl, mediumImgUrl, largeImgUrl) {
         this.title = title;
         this.versions = versions;
+        this.version = versions[0];
         this.platform = platform;
         this.description = description;
         this.audio = audio;
@@ -100,6 +101,9 @@ class Anime {
         this.largeImgUrl = largeImgUrl;
 
         this.observers = [];
+        this.episodes = [];
+
+        this.getEpisodes();
     }
 
     set title(title) {
@@ -136,6 +140,18 @@ class Anime {
     notifyAll() {
         this.observers.forEach((observer) => {
             observer.update(this.copy());
+        });
+    }
+
+    getEpisodes() {
+        getDocs(collection(db, `animes/${this.title}/versions/${this.version}/episodes`)).then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                console.log(doc.id, " => ", doc.data());
+                let episodeData = doc.data();
+                // let episode = new Episode(episodeData.title, episodeData.version, episodeData.availableVersions, episodeData.number, episodeData.link, episodeData.thumbnail, episodeData.premiumPubDate, episodeData.freePubDate);
+                // let episodeView = new EpisodeView();
+                // let episodeController = new EpisodeController(episode, episodeView);
+            });
         });
     }
 }
@@ -273,13 +289,154 @@ class AnimeController {
     }
 }
 
-class AnimeEpisode {}
+class Episode {
+    constructor(title, version, availableVersions, number, link, thumbnail, premiumPubDate, freePubDate) {
+        this.title = title;
+        this.version = version;
+        this.availableVersions = availableVersions;
+        this.number = number;
+        this.link = link;
+        this.thumbnail = thumbnail;
+        this.premiumPubDate = premiumPubDate;
+        this.freePubDate = freePubDate;
 
-class AnimeEpisodeView {}
+        this.observers = [];
+    }
 
-class AnimeEpisodeController {}
+    registerObserver(observer) {
+        this.observers.push(observer);
+    }
+
+    unregisterObserver(observer) {
+        let observerIndex = this.observers.findIndex(observer);
+        this.observers.splice(observerIndex, 1);
+    }
+
+    copy() {
+        return {
+            title: this.title,
+            version: this.version,
+            availableVersions: this.availableVersions,
+            number: this.number,
+            thumbnail: this.thumbnail,
+            premiumPubDate: this.premiumPubDate,
+            freePubDate: this.freePubDate,
+        }
+    }
+
+    notifyAll() {
+        this.observers.forEach((observer) => {
+            observer.update(this.copy());
+        })
+    }
+}
+
+class EpisodeView {
+    constructor() {
+
+    }
+
+    static init() {
+
+        EpisodeView.episodesContainer = document.getElementById('last-episodes');
+        // Inicio creación prototipo episodeCard
+        EpisodeView.episodeCardPrototype = document.createElement('li');
+        EpisodeView.episodeCardPrototype.classList.add('episodeCard');
+        let episodeViewNowButton = document.createElement('button');
+        episodeViewNowButton.classList.add('episodeViewNowButton');
+        let episodeThumbnail = document.createElement('img');
+        episodeThumbnail.classList.add('episodeThumbnail');
+        let episodeTitle = document.createElement('p');
+        episodeTitle.classList.add('episodeTitle');
+        let episodeNumber = document.createElement('p');
+        episodeNumber.classList.add('episodeNumber');
+        let episodeVersions = document.createElement('select');
+        episodeVersions.classList.add('episodeVersions');
+
+        EpisodeView.episodeCardPrototype.append(episodeVersions);
+        EpisodeView.episodeCardPrototype.append(episodeThumbnail);
+        EpisodeView.episodeCardPrototype.append(episodeTitle);
+        EpisodeView.episodeCardPrototype.append(episodeNumber);
+        EpisodeView.episodeCardPrototype.append(episodeViewNowButton);
+        // Fin creación prototipo episodeCard
+    }
+
+    populate(episode) {
+        this.episodeCard = EpisodeView.episodeCardPrototype.cloneNode(true);
+        this.episodeCard.querySelector('.episodeViewNowButton').innerText = 'Ver ahora';
+        this.episodeCard.querySelector('.episodeThumbnail').src = episode.thumbnail;
+        this.episodeCard.querySelector('.episodeTitle').innerText = episode.title;
+        this.episodeCard.querySelector('.episodeNumber').innerText = episode.number;
+
+        episode.availableVersions.forEach(
+            (version) => {
+                let episodeVersion = document.createElement('option');
+                episodeVersion.value = version;
+
+                this.episodeCard.querySelector('.episodeVersions').append(episodeVersion);
+            }
+        );
+
+        EpisodeView.episodesContainer.append(this.episodeCard);
+
+    }
+
+    update(episode) {
+        this.episodeCard.querySelector('.episodeThumbnail').src = episode.thumbnail;
+        this.episodeCard.querySelector('.episodeTitle').innerText = episode.title;
+        this.episodeCard.querySelector('.episodeNumber').innerText = episode.number;
+
+        episode.availableVersions.forEach(
+            (version) => {
+                let episodeVersion = document.createElement('option');
+                episodeVersion.value = version;
+
+                this.episodeCard.querySelector('.episodeVersions').append(episodeVersion);
+            }
+        );
+
+    }
+
+    episodeCardDisable() {
+        // TODO: Tornar la episodeCard gris
+    }
+
+    episodeCardEnable() {
+        // TODO: Tornar la episodeCard al color por defecto
+    }
+
+
+}
+
+class EpisodeController {
+    constructor(episode, episodeView) {
+        this.episode = episode;
+        this.episodeView = episodeView;
+
+        this.episode.registerObserver(this.episodeView);
+        this.episodeView.populate(this.episode.copy());
+    }
+
+    changeVersion() {
+        // TODO: Cambiar de versión según el valor del select
+    }
+
+    changeSubscription() {
+        // TODO: Cambiar la subscripción al anime según el estado
+        // del checkbox
+    }
+
+    subscribeToAnimeVersion() {
+        // TODO: Subscribirse a la versión del anime actual
+    }
+
+    unsubscribeFromAnimeVersion() {
+        // TODO: Desuscribirse de la versión del anime actual
+    }
+}
 
 window.addEventListener("load", function() {
     AnimeView.init();
+    EpisodeView.init();
     AnimeController.init();
 });
