@@ -19,13 +19,27 @@ class CrunchyrollFirestoreManager extends FirestoreManager {
                 // Intentar actualizar
                 $episodeRef->update([
                     [          
-                        'path' => 'timestamp',
-                        'value' => 'hoy'
+                        'path' => 'crunchyrollEpisodeTitle',
+                        'value' => $episode['crunchyrollEpisodeTitle']
                     ],
                     [
-                        'path' => 'title',
-                        'value' => 'createdNow'
-                    ]
+                        'path' => 'crunchyrollPremiumPubDate',
+                        'value' => $episode['crunchyrollPremiumPubDate']
+                    ],
+                    [
+                        'path' => 'subtitles',
+                        'value' => $episode['subtitles']
+                    ],
+                    [
+                        'path' => 'link',
+                        'value' => $episode['link']
+                    ],
+                    [
+                        'path' => 'mediaThumbnail',
+                        'value' => $episode['mediaThumbnail']
+                    ],
+                    
+
                 ]);
 
             } catch (NotFoundException $e) {

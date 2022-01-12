@@ -22,7 +22,7 @@ class CrunchyrollConversor extends Conversor {
         $episodesArray = $xmlArray["channel"]["item"];
 
         foreach ($episodesArray as &$episode) {
-            // La agrupación del patrón que contendrá el nombre de la versión
+            // La agrupación del patrón que contendrá el nombre de la versión será el 1
             // 
             // en Platinum End (German Dub) - Episode 8 - Symbol of Promise
             // la versión resulta ser Platinum End (German Dub)
