@@ -38,8 +38,6 @@ class FirestoreManager  {
         $this->db = new FirestoreClient([
             'projectId' => $projectId
         ]);
-
-        printf('Created Cloud Firestore client with default project ID.' . PHP_EOL);
     }
 
 

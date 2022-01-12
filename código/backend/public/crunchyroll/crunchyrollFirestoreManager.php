@@ -67,7 +67,8 @@ class CrunchyrollFirestoreManager extends FirestoreManager {
                 $this->notifier->notify_subscribers($episode, $this);
 
             } finally {
-                printf('Added data to the episode document in the episodes collection of the anime version.' . PHP_EOL);
+                // TODO: Desarrollar método set_log en clase padre
+                //$this->set_log('Added data to the episode document in the episodes collection of the anime version.' . PHP_EOL);
 
             }
 
@@ -77,7 +78,7 @@ class CrunchyrollFirestoreManager extends FirestoreManager {
     }
 
     public function retrieve_subscribers($episode){
-        printf("\n Buscando usuarios subscritos \n");
+        
         
         // Query buscar usuarios que estén subscritos a la versión del anime
         // del episodio
@@ -90,10 +91,9 @@ class CrunchyrollFirestoreManager extends FirestoreManager {
         $subscribers = [];
         $snapshot = $subscriptions_query->documents();
         foreach ($snapshot as $user) {
-            printf("\n Usuarios subscritos encontrados \n");
             $user_data = $user->data();
             array_push($subscribers,$user_data);
-            var_dump($user_data);
+
         }
 
         return $subscribers;        

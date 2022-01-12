@@ -88,6 +88,8 @@ class Notifier {
     }
 
     private function set_log($string_to_log) {
-        error_log($string_to_log,3,$this->log_file);
+        $file = fopen($this->log_file, "w") or die("Unable to open file!");
+        fwrite($file, $string_to_log);
+        fclose($file);
     }
 }
