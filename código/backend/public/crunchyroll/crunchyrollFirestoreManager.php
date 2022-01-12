@@ -64,13 +64,17 @@ class CrunchyrollFirestoreManager extends FirestoreManager {
                 $episodeRef->set($episode);
 
                 // Actualizar versiones disponibles del episodio
-                $originalEpisodeRef = $this->db->collection('animes/'.$episode['crunchyrollSeriesTitle'].'/versions/'.$episode['crunchyrollSeriesTitle'].'/episodes/')->document('Episode '.$episode['crunchyrollEpisodeNumber']);
+                $originalEpisodeRef = $this->db->collection('animes/'.$episode['crunchyrollSeriesTitle'].'/versions/'.$episode['crunchyrollSeriesTitle'].'/episodes')->document('Episode '.$episode['crunchyrollEpisodeNumber']);
+                
+
                 $originalEpisodeRef->update([
                     [          
                         'path' => 'availableVersions',
                         'value' => FieldValue::arrayUnion([$versionRef])
                     ]
                 ]);
+
+
 
                 // Notificar subscribers
                 $this->notifier = new CrunchyrollNotifier();
