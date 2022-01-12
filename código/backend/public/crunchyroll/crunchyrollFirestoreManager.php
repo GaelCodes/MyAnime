@@ -1,5 +1,6 @@
 <?php
 use Google\Cloud\Core\Exception\NotFoundException;
+use Google\Cloud\Firestore\FieldValue;
 require_once '../utilities/firestoreManagerClass.php';
 
 class CrunchyrollFirestoreManager extends FirestoreManager {
@@ -47,20 +48,29 @@ class CrunchyrollFirestoreManager extends FirestoreManager {
                 // Crear documentos y notificar usuarios
                 
                 // Crear anime
-                $animeRef = $this->db->collection('animes')->document($episode['crunchyrollSeriesTitle']);
                 $anime = array('title' => $episode['crunchyrollSeriesTitle']);
+                $animeRef = $this->db->collection('animes')->document($anime['title']);
                 $animeRef->set($anime);
 
                 // Crear version de anime
-                $versionRef = $this->db->collection('animes/'.$episode['crunchyrollSeriesTitle'].'/versions')->document($episode['version']);
                 $version = array(
                     'title' => $episode['version'],
                     'audio' => $episode['language']
                 );
+                $versionRef = $this->db->collection('animes/'.$anime['title'].'/versions')->document($version['title']);
                 $versionRef->set($version);
                 
                 // Crear episodio
                 $episodeRef->set($episode);
+
+                // Actualizar versiones disponibles del episodio
+                $originalEpisodeRef = $this->db->collection('animes/'.$episode['crunchyrollSeriesTitle'].'/versions/'.$episode['crunchyrollSeriesTitle'].'/episodes/')->document('Episode '.$episode['crunchyrollEpisodeNumber']);
+                $originalEpisodeRef->update([
+                    [          
+                        'path' => 'availableVersions',
+                        'value' => FieldValue::arrayUnion([$versionRef])
+                    ]
+                ]);
 
                 // Notificar subscribers
                 $this->notifier = new CrunchyrollNotifier();
