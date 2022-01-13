@@ -3,22 +3,157 @@
 
 /* Inicio header */
 
+nav {
+    background-color: rgba(13, 0, 27, 0.678) !important;
+    -webkit-box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.82);
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.82);
+}
+
+nav [type="search"] {
+    background-color: rgba(255, 255, 255, 0.397);
+    border: none;
+    color: white !important;
+}
+
+nav [type="search"]:focus {
+    background-color: rgba(255, 255, 255, 0.397);
+    border: none;
+    color: white !important;
+}
+
+nav [type="search"]::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: white;
+    opacity: 1;
+    /* Firefox */
+}
+
+nav [type="search"]:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: white;
+}
+
+nav [type="search"]::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: white;
+}
+
+.nav-link {
+    font-weight: bolder;
+}
+
 
 /* Fin header */
 
 
 /* Inicio body */
 
+* {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #11203edb!important;
+    color: #e6e6e6 !important;
+}
+
+h2 {
+    /* color: red; */
+    padding: 1em 0;
+}
+
+.sub-section {
+    padding-bottom: 3em;
+}
+
 #last-animes {
+    margin: 0 !important;
+    padding: 0;
     list-style: none;
 }
 
 #last-animes .animeCard {
-    border: 1px solid black;
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 1em;
+    margin: 0.5em 0;
+    background-color: rgb(70, 3, 146);
+    -webkit-box-shadow: 6px 4px 2px 0px #0000005c;
+    box-shadow: 6px 4px 2px 0px #0000005c;
+}
+
+.animeCard .animeVersions {
+    border-radius: 0.2em;
+    padding: 0.2em;
+    /* Only for debug */
+    background-color: rgb(117, 57, 0) !important;
+    border: 1px black solid;
+}
+
+.animeCard .animeDescription {
+    max-height: 25vh;
+    padding-bottom: 2em;
+    overflow: hidden;
+    overflow-y: auto;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.568) 0%, rgba(255, 255, 255, 0) 20%);
+}
+
+.animeCard .animeDescription::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.animeCard .animeDescription::-webkit-scrollbar-thumb {
+    background: #b3afb334;
+    border-radius: 4px;
+}
+
+.animeCard .animeDescription::-webkit-scrollbar-thumb:hover {
+    background: #c9c9c950;
+}
+
+.animeCard .animeDescription::-webkit-scrollbar-track {
+    background: #8080804b;
+    border: 0.1px solid #414141;
+    border-radius: 4px;
+    box-shadow: inset 0px 0px 0px 0px #F0F0F0;
+}
+
+.animeCard .animePlatformButton {
+    border: none;
+    border-radius: 0.2em;
 }
 
 #last-episodes {
     list-style: none;
+    padding: 0 !important;
+}
+
+#last-episodes .episodeCard {
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 1em;
+    margin: 0.5em 0;
+    border-radius: 1em;
+    /* Only for debug */
+    background-color: rgb(177, 80, 1);
+    -webkit-box-shadow: 6px 4px 2px 0px #0000005c;
+    box-shadow: 6px 4px 2px 0px #0000005c;
+}
+
+.episodeCard .episodeVersions {
+    border-radius: 0.2em;
+    padding: 0.2em;
+    /* Only for debug */
+    background-color: rgb(117, 57, 0) !important;
+    border: 1px black solid;
+}
+
+.episodeCard .episodeViewNowButton {
+    padding: 0.6em;
+    border-radius: 1em;
+    border: none;
 }
 
 
@@ -26,6 +161,36 @@
 
 
 /* Inicio footer */
+
+footer {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    background-color: rgba(0, 0, 0, 0.678);
+    padding: 2em 0px;
+    color: rgba(219, 219, 219, 0.932);
+}
+
+.my-social-items {
+    font-size: 34px;
+}
+
+.my-social-items li {
+    margin: 0px 10px;
+}
+
+.my-social-items a:visited {
+    color: #157ca1;
+}
+
+.my-social-items a:link {
+    color: #157ca1;
+}
+
+.my-politics a:visited,
+.my-politics a:link {
+    text-decoration: none;
+    color: white;
+}
 
 
 /* Fin footer */
@@ -35,6 +200,44 @@
 
 
 /* Inicio pantallas entre 576px y 768px */
+
+@media only screen and (min-width: 576px) {
+    /* Inicio header */
+    /* Fin header */
+    /* Inicio body */
+    * {
+        max-width: 100%;
+    }
+    #last-animes {
+        list-style: none;
+    }
+    #last-animes .animeCard {
+        width: calc(96% / 2);
+        margin: 0.5em calc(4% / 4);
+        padding: 1em;
+    }
+    .animeCard .animeVersions {
+        width: 100%;
+    }
+    #last-episodes {
+        list-style: none;
+        padding: 0px !important;
+    }
+    #last-episodes .episodeCard {
+        width: calc(96% / 2);
+        margin: 0.5em calc(4% / 4);
+        border-radius: 1em;
+    }
+    .episodeCard .episodeVersions {
+        width: 100%;
+    }
+    .episodeCard .episodeViewNowButton {
+        margin-top: auto !important;
+    }
+    /* Fin body */
+    /* Inicio footer */
+    /* Fin footer */
+}
 
 
 /* Fin pantallas entre 576px y 768px */
@@ -48,77 +251,84 @@
 
 /* Inicio pantallas entre 992px y 1200px */
 
+@media only screen and (min-width: 992px) {
+    /* Inicio header */
+    /* Fin header */
+    /* Inicio body */
+    * {
+        max-width: 100%;
+    }
+    #last-animes {
+        list-style: none;
+    }
+    #last-animes .animeCard {
+        width: calc(96% / 3) !important;
+        margin: 0.5em calc(4% / 6);
+        padding: 1em;
+    }
+    .animeCard .animeVersions {
+        width: 100%;
+    }
+    #last-episodes {
+        list-style: none;
+        padding: 0px !important;
+    }
+    #last-episodes .episodeCard {
+        width: calc(96% / 3);
+        margin: 0.5em calc(4% / 6);
+        padding: 1em;
+    }
+    .episodeCard .episodeVersions {
+        width: 100%;
+    }
+    /* Fin body */
+    /* Inicio footer */
+    /* Fin footer */
+}
+
 
 /* Fin pantallas entre 992px y 1200px */
 
-nav {
-    background-color: #1e2a48;
+
+/* Inicio pantallas mayores a 1200px */
+
+@media only screen and (min-width: 1200px) {
+    /* Inicio header */
+    /* Fin header */
+    /* Inicio body */
+    * {
+        max-width: 100%;
+    }
+    #last-animes {
+        list-style: none;
+    }
+    #last-animes .animeCard {
+        width: calc(96% / 4) !important;
+        margin: 0.5em calc(4% / 8);
+        padding: 1em;
+    }
+    .animeCard .animeVersions {
+        width: 100%;
+    }
+    #last-episodes {
+        list-style: none;
+        padding: 0px !important;
+    }
+    #last-episodes .episodeCard {
+        width: calc(96% / 4);
+        margin: 0.5em calc(4% / 8);
+        padding: 1em;
+    }
+    .episodeCard .episodeVersions {
+        width: 100%;
+    }
+    .episodeCard .episodeViewNowButton {
+        margin-top: auto !important;
+    }
+    /* Fin body */
+    /* Inicio footer */
+    /* Fin footer */
 }
 
-body {
-    background-color: #11203edb!important;
-    color: #e6e6e6 !important;
-}
 
-.bg-banner {
-    background-color: #3b4b69a8;
-}
-
-.search-btn {
-    top: 0px;
-    right: 0px;
-}
-
-.facebook-icon {
-    color: #3b5998;
-}
-
-.comment-list {
-    margin: 20px 0px;
-    list-style: none;
-}
-
-.comment-list li {
-    margin: 10px 0px;
-}
-
-.aspect-ratio-thumbnail {
-    position: relative;
-    background-color: #11203edb;
-    width: 100%;
-    padding-top: 100%;
-}
-
-.aspect-ratio-thumbnail img,
-.aspect-ratio-thumbnail .card-img-overlay {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-}
-
-.aspect-ratio-cartel {
-    /* 9:16 */
-    position: relative;
-    background-color: rgb(15, 7, 49);
-    width: 100%;
-    padding-top: 177.77%;
-}
-
-.aspect-ratio-cartel img,
-.aspect-ratio-cartel .card-img-overlay {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-}
-
-.anime-title {
-    font-weight: 900;
-    -webkit-text-stroke: 1px black;
-    border-radius: 1em;
-    background-color: #38383877;
-    text-align: center;
-}
+/* Fin pantallas mayores a 1200px */

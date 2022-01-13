@@ -21,85 +21,122 @@
 
 
     <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-md text-white">
-
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
 
-            <div class="navbar-brand text-center fw-bold">
-                <a href="#" class="btn btn-info fw-bold" role="button">
-                    MyAnime
-                </a>
+            <a class="col-7 col-lg-4 navbar-brand text-center d-inline-block" href="#">
+                MyAnime <br>
                 <h1 class="h6">Tu notificador de animes favorito</h1>
-            </div>
+            </a>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuID" aria-controls="menuID" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
 
-            <div class="collapse navbar-collapse" id="menuID">
+            <button class="col-3 col-sm-2 col-lg-6 navbar-toggler d-inline-block d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
 
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 me-5 fw-bold">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a href="" class="nav-link active  text-decoration-none text-white" aria-current="page"> INICIO </a>
+                        <a class="nav-link active" aria-current="page" href="#">INICIO</a>
                     </li>
                     <li class="nav-item">
-                        <a href="" class="nav-link text-decoration-none text-white"> TODOS LOS ANIMES </a>
+                        <a class="nav-link" href="#">TODOS LOS ANIMES</a>
                     </li>
                 </ul>
-                <form action="" class="position-relative me-4">
-                    <input type="search" class="form-control pe-5" placeholder="Buscar..." aria-label="Search">
-                    <button class="btn position-absolute search-btn" type="submit">
-                        <i class="bi bi-search"></i>
-                    </button>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Buscar</button>
                 </form>
-
             </div>
 
-
         </div>
-
-
-
-
-
     </nav>
 
     <!-- MAIN CONTAINER -->
     <main class="container">
-        <div class="row">
-            <section class="col-12 col-md-3 bg-banner p-4">
-                <img src="https://dummyimage.com/300x250/240924/000000&text=Banner" alt="Image not found" class="img-fluid mb-5">
-                <h2 class="h6">Animes en emisión</h2>
-                <ul id="simulcast-animes-container" class="d-flex flex-column justify-content-around">
-                    <!-- <li> Anime </li> -->
-                </ul>
-            </section>
+        <div class="row m-0">
 
-            <section class="col-12 col-md-9 ps-md-5">
+            <!-- Sección principal (habrá más en el futuro) -->
+            <section class="col-12 text-center">
 
-                <h2 class="mt-5 mb-2">Últimos episodios de anime</h2>
-                <ul class="row g-2 justify-content-between" id="last-episodes">
+                <section class="sub-section">
+                    <h2 class="m-0">Últimos episodios de anime</h2>
+                    <ul class="row m-0" id="last-episodes">
+                    </ul>
+                </section>
 
-                </ul>
-                <h2 class="mt-5 mb-2">Últimos animes agregados</h2>
-                <ul class="row g-2" id="last-animes">
 
-                </ul>
+                <section class="sub-section">
+                    <h2 class="m-0">Últimos animes agregados</h2>
+                    <ul class="row m-0" id="last-animes">
+
+
+                    </ul>
+                </section>
 
             </section>
         </div>
     </main>
     <!-- FOOTER -->
 
-    <footer class="d-flex flex-column align-items-center py-4 mt-5 bg-dark my-0">
+    <!-- <footer class="d-flex flex-column align-items-center py-4 mt-5 bg-dark my-0">
+
+
         <p class="m-0">Proyecto desarrollado por <b> Abigael Heredia Feliz</b></p>
+    </footer> -->
+
+    <footer>
+        <div class="container">
+            <div class="row justify-content-end text-center mt-5 pt-5">
+
+
+                <!-- Copyright -->
+                <section class="col-12 col-md-4 order-md-2">
+                    <p class="mb-0 mb-md-2">Desarrollado por</p>
+                    <p>&#169; 2022 <b>Abigael Heredia Feliz</b> - Todos los derechos reservados</p>
+                </section>
+
+                <!-- Redes sociales -->
+                <section class="col-12 col-md-4 order-md-3 mb-4 mb-md-0 text-center">
+                    <p class="h6">Redes sociales</p>
+                    <ul class="my-social-items list-group list-unstyled inline-list list-group-horizontal justify-content-center">
+                        <li>
+                            <a href="https://github.com/GaelCodes" target="_blank" rel="noopener noreferrer" aria-label="Link to my Github profile">
+                                <i class="bi bi-github"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/gael_codes/" target="_blank" rel="noopener noreferrer" aria-label="Link to my Instagram profile">
+                                <i class="bi bi-instagram"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/gaelcodes" target="_blank" rel="noopener noreferrer" aria-label="Link to my Twitter profile">
+                                <i class="bi bi-twitter"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/abigael-heredia/" target="_blank" rel="noopener noreferrer" aria-label="Link to my LinkedIn profile">
+                                <i class="bi bi-linkedin"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- Términos y licencias -->
+                <section class="my-politics col-12 col-md-4 d-flex flex-column mb-4">
+                    <a href="licenses/privacidad.html" class="mb-4" target="_blank" rel="noopener noreferrer">Política de privacidad</a>
+                    <a href="licenses/licenses.html" target="_blank" rel="noopener noreferrer">Terminos y Licencias de terceros</a>
+                </section>
+            </div>
+        </div>
     </footer>
 
 
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
     <!-- My App Code -->
-    <script src="js/app.js" type="module"></script>
+    <!-- <script src="js/app.js" type="module"></script> -->
 </body>
 
 </html>
