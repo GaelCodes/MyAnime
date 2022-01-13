@@ -74,6 +74,7 @@ import {
     getFirestore,
     collection,
     getDocs,
+    getDoc
 } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -88,30 +89,36 @@ const analytics = getAnalytics(app);
 const db = getFirestore();
 
 class Anime {
-    constructor(title, versions, platform, description, audio, subtitles, smallImgUrl, mediumImgUrl, largeImgUrl) {
+    constructor(title, platform, description, audio, mediaThumbnails) {
+        this.observers = [];
         this.title = title;
-        this.versions = versions;
-        this.version = versions[0];
         this.platform = platform;
         this.description = description;
         this.audio = audio;
-        this.subtitles = subtitles;
-        this.smallImgUrl = smallImgUrl;
-        this.mediumImgUrl = mediumImgUrl;
-        this.largeImgUrl = largeImgUrl;
+        this.mediaThumbnails = mediaThumbnails;
+        this.versions = [];
 
-        this.observers = [];
-        this.episodes = [];
-
-        this.getEpisodes();
     }
 
     set title(title) {
         this._title = title;
+
     }
 
     get title() {
         return this._title;
+
+    }
+
+    set versions(newVersions) {
+        this._versions = newVersions;
+        this.notifyAll();
+
+    }
+
+    get versions() {
+        return this._versions;
+
     }
 
     copy() {
@@ -121,15 +128,13 @@ class Anime {
             description: this.description,
             platform: this.platform,
             audio: this.audio,
-            subtitles: this.subtitles,
-            smallImgUrl: this.smallImgUrl,
-            mediumImgUrl: this.mediumImgUrl,
-            largeImgUrl: this.largeImgUrl,
+            mediaThumbnails: this.mediaThumbnails
         };
     }
 
     registerObserver(observer) {
         this.observers.push(observer);
+
     }
 
     unregisterObserver(observer) {
@@ -138,22 +143,16 @@ class Anime {
     }
 
     notifyAll() {
-        this.observers.forEach((observer) => {
-            observer.update(this.copy());
-        });
+        // Si no hay observers no hará nada
+        if (this.observers.length) {
+            this.observers.forEach((observer) => {
+                observer.update(this.copy());
+            });
+
+        }
     }
 
-    getEpisodes() {
-        getDocs(collection(db, `animes/${this.title}/versions/${this.version}/episodes`)).then((querySnapshot) => {
-            querySnapshot.forEach((doc) => {
-                console.log(doc.id, " => ", doc.data());
-                let episodeData = doc.data();
-                // let episode = new Episode(episodeData.title, episodeData.version, episodeData.availableVersions, episodeData.number, episodeData.link, episodeData.thumbnail, episodeData.premiumPubDate, episodeData.freePubDate);
-                // let episodeView = new EpisodeView();
-                // let episodeController = new EpisodeController(episode, episodeView);
-            });
-        });
-    }
+
 }
 
 class AnimeView {
@@ -178,59 +177,60 @@ class AnimeView {
         animePlatformButton.classList.add("animePlatformButton");
 
         AnimeView.animeCardPrototype.append(animeVersions);
-        AnimeView.animeCardPrototype.append(animePlatformButton);
         AnimeView.animeCardPrototype.append(animeThumbnail);
         AnimeView.animeCardPrototype.append(animeDescription);
         AnimeView.animeCardPrototype.append(animeAudio);
         AnimeView.animeCardPrototype.append(animeSubtitles);
+        AnimeView.animeCardPrototype.append(animePlatformButton);
         // Fin Creación del prototipo de la animeCard
     }
 
     populate(anime) {
         this.animeCard = AnimeView.animeCardPrototype.cloneNode(true);
-        this.animeCard.querySelector(".animePlatformButton").innerText = anime.platform;
-        this.animeCard.querySelector(".animeThumbnail").srcset = `${anime.smallImgUrl} 320w,${anime.mediumImgUrl} 480w,${anime.largeImgUrl} 800w`;
-        this.animeCard.querySelector(".animeThumbnail").src = anime.smallImgUrl;
+        this.animeCard.querySelector(".animeThumbnail").srcset = `${anime.mediaThumbnails.small.url} ${anime.mediaThumbnails.small.width}w,${anime.mediaThumbnails.medium.url} ${anime.mediaThumbnails.medium.width}w,${anime.mediaThumbnails.full.url} ${anime.mediaThumbnails.full.width}w`;
+        this.animeCard.querySelector(".animeThumbnail").sizes =
+            "(max-width: 320px) 280px, (max-width: 480px) 440px, 800px";
+        this.animeCard.querySelector(".animeThumbnail").src = anime.mediaThumbnails.full.url;
         this.animeCard.querySelector(".animeDescription").innerText = anime.description;
+        this.animeCard.querySelector(".animeAudio").innerText = anime.audio;
+        this.animeCard.querySelector(".animePlatformButton").innerText = anime.platform;
+
+        // Por cada versión del anime que haya crearé
+        // una opción en el select animeVersions
+        // 
+        // Las versiones del anime se obtendrán en tiempos distintos
+        // estableceré las versiones en el update en cuanto se hayan obtenido
+
+        AnimeView.animeContainer.append(this.animeCard);
+    }
+
+    update(anime) {
+
+        this.animeCard.querySelector(".animePlatformButton").innerText =
+            anime.platform;
+
+        this.animeCard.querySelector(".animeThumbnail").srcset = `${anime.mediaThumbnails.small.url} ${anime.mediaThumbnails.small.width}w,${anime.mediaThumbnails.medium.url} ${anime.mediaThumbnails.medium.width}w,${anime.mediaThumbnails.full.url} ${anime.mediaThumbnails.full.width}w`;
+        this.animeCard.querySelector(".animeThumbnail").sizes =
+            "(max-width: 320px) 280px, (max-width: 480px) 440px, 800px";
+        this.animeCard.querySelector(".animeThumbnail").src = anime.mediaThumbnails.full.url;
+        this.animeCard.querySelector(".animeDescription").innerText =
+            anime.description;
         this.animeCard.querySelector(".animeAudio").innerText = anime.audio;
         this.animeCard.querySelector(".animeSubtitles").innerText = anime.subtitles;
 
         // Por cada versión del anime que haya crearé
         // una opción en el select animeVersions
 
-        anime.versions.forEach((version) => {
-            let animeVersion = document.createElement("option");
-            animeVersion.classList.add("animeVersion");
-            animeVersion.value = version;
-            animeVersion.innerText = version;
-            this.animeCard.querySelector(".animeVersions").append(animeVersion);
-        });
-
-        AnimeView.animeContainer.append(this.animeCard);
-    }
-
-    update(anime) {
-        this.animeCard.querySelector("animePlatformButton").innerText =
-            anime.platform;
-        this.animeCard.querySelector("animeThumbnail").src = anime.smallImgUrl;
-        this.animeCard.querySelector(
-            "animeThumbnail"
-        ).srcset = `${anime.smallImgUrl} 320w,${anime.mediumImgUrl} 480w,${anime.largeImgUrl} 800w`;
-        this.animeCard.querySelector("animeDescription").innerText =
-            anime.description;
-        this.animeCard.querySelector("animeAudio").innerText = anime.audio;
-        this.animeCard.querySelector("animeSubtitles").innerText = anime.subtitles;
-
-        // Por cada versión del anime que haya crearé
-        // una opción en el select animeVersions
-
-        anime.versions.forEach((version) => {
-            let animeVersion = document.createElement("option");
-            animeVersion.classList.add("animeVersion");
-            animeVersion.value = version;
-            animeVersion.innerText = version;
-            this.animeCard.querySelector("animeVersions").append(animeVersion);
-        });
+        this.animeCard.querySelector(".animeVersions").innerHTML = '';
+        if (anime.versions.length) {
+            anime.versions.forEach((version) => {
+                let animeVersion = document.createElement("option");
+                animeVersion.classList.add("animeVersion");
+                animeVersion.value = version.title;
+                animeVersion.innerText = version.title;
+                this.animeCard.querySelector(".animeVersions").append(animeVersion);
+            });
+        }
     }
 }
 
@@ -239,33 +239,105 @@ class AnimeController {
         this.anime = anime;
         this.animeView = animeView;
 
-        this.anime.registerObserver(this.animeView);
         this.animeView.populate(this.anime.copy());
+        this.anime.registerObserver(this.animeView);
     }
 
     static init() {
         // TODO: Obtener todos los datos, inicializar la lógica desde aquí
         // subscriberse a cambios de la BBDD
-
+        AnimeController.episodesPromises = [];
         getDocs(collection(db, "animes")).then((querySnapshot) => {
-            querySnapshot.forEach((doc) => {
-                console.log(doc.id, " => ", doc.data());
-                let animeData = doc.data();
+
+            querySnapshot.forEach((animeDoc) => {
+                let animeData = animeDoc.data();
+                // TODO: Backend - Conseguir miniaturas del anime
+                animeData.mediaThumbnails = {};
+                animeData.mediaThumbnails.full = {
+                    url: 'https://dummyimage.com/640x360/0a0040/d1d4f0',
+                    width: 640,
+                    heigh: 360
+                }
+
+                animeData.mediaThumbnails.medium = {
+                    url: 'https://dummyimage.com/100x56/0a0040/d1d4f0',
+                    width: 100,
+                    heigh: 56
+                }
+
+                animeData.mediaThumbnails.small = {
+                    url: 'https://dummyimage.com/50x28/0a0040/d1d4f0',
+                    width: 50,
+                    heigh: 28
+                }
+
                 let anime = new Anime(
                     animeData.title,
-                    animeData.versions,
-                    animeData.platform,
-                    animeData.description,
+                    'Crunchyroll',
+                    'Descripción del anime: lorem Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.',
                     animeData.audio,
-                    animeData.subtitles,
-                    animeData.smallImgUrl,
-                    animeData.mediumImgUrl,
-                    animeData.largeImgUrl
+                    animeData.mediaThumbnails
                 );
                 let animeView = new AnimeView();
                 let animeController = new AnimeController(anime, animeView);
+
+                // Obtener todas las versiones del anime
+
+                getDocs(collection(db, `animes/${anime.title}/versions`)).then(
+                    (querySnapshot) => {
+
+                        querySnapshot.forEach((versionDoc) => {
+                            let versionData = versionDoc.data();
+
+                            // TODO: Reto - investigar porque el push no 
+                            // detona el setter de la propiedad
+                            // 
+                            let newVersions = anime.versions;
+                            newVersions.push(versionData);
+                            anime.versions = newVersions;
+
+                        })
+                    }
+                );
+
+                // Reuno las promesas de los episodios de la versión original
+                AnimeController.episodesPromises.push(animeController.getEpisodes());
             });
+
+        }).finally(() => {
+            Promise.all(AnimeController.episodesPromises).then(
+                (querySnapshots) => {
+
+                    // A partir de los querySnapshots que devuelven las promesas
+                    // obtengo los documentos de los episodes y creo los episodes a partir de ellos
+
+                    querySnapshots.forEach(
+                        (querySnapshot) => {
+
+                            querySnapshot.forEach(
+                                (episodeDoc) => {
+                                    let episodeData = episodeDoc.data();
+
+                                    let episode = new Episode(episodeData.title, episodeData.availableVersions, episodeData.number, episodeData.link, episodeData.mediaThumbnail, episodeData.premiumPubDate, episodeData.freePubDate);
+                                    let episodeView = new EpisodeView();
+                                    let episodeController = new EpisodeController(episode, episodeView);
+                                    EpisodeController.episodes.push({ 'model': episode, 'view': episodeView, 'controller': episodeController });
+                                }
+                            );
+                        }
+                    );
+                }
+            ).finally(
+                () => {
+                    // TODO: Buscar forma abreviada de ejecutar esto
+                    EpisodeController.showEpisodes();
+                }
+            );
         });
+    }
+
+    getEpisodes() {
+        return getDocs(collection(db, `animes/${this.anime.title}/versions/${this.anime.title}/episodes`));
     }
 
     subscribeToCurrentVersion() {
@@ -287,20 +359,42 @@ class AnimeController {
     unActivateViewForLoggedUser() {
         // TODO: Deshabilitar lista de subscribciones cuando el usuario no está loggeado
     }
+
+
 }
 
 class Episode {
-    constructor(title, version, availableVersions, number, link, thumbnail, premiumPubDate, freePubDate) {
+    constructor(title, availableVersionsRefs = [], number, link, mediaThumbnail, premiumPubDate, freePubDate) {
+        this.observers = [];
         this.title = title;
-        this.version = version;
-        this.availableVersions = availableVersions;
         this.number = number;
         this.link = link;
-        this.thumbnail = thumbnail;
         this.premiumPubDate = premiumPubDate;
         this.freePubDate = freePubDate;
+        this.thumbnails = this.filterThumbnails(mediaThumbnail);
 
-        this.observers = [];
+        // Obtengo los documentos de las versiones del episodio
+        // posteriormento se los asigno a la propiedad this.availableVersions
+        this.availableVersions = []
+        this.getVersions(availableVersionsRefs);
+
+    }
+
+    set premiumPubDate(stringDate) {
+        this._premiumPubDate = new Date(stringDate);
+    }
+
+    get premiumPubDate() {
+        return this._premiumPubDate;
+    }
+
+    set version(newVersion) {
+        this._version = newVersion;
+        this.notifyAll();
+    }
+
+    get version() {
+        return this._version;
     }
 
     registerObserver(observer) {
@@ -318,16 +412,99 @@ class Episode {
             version: this.version,
             availableVersions: this.availableVersions,
             number: this.number,
-            thumbnail: this.thumbnail,
+            thumbnails: this.thumbnails,
             premiumPubDate: this.premiumPubDate,
             freePubDate: this.freePubDate,
         }
     }
 
     notifyAll() {
-        this.observers.forEach((observer) => {
+
+        for (let i = 0; i < this.observers.length; i++) {
+            const observer = this.observers[i];
             observer.update(this.copy());
-        })
+
+        }
+    }
+
+    filterThumbnails(mediaThumbnail) {
+        // TODO: Es necesario formatear los datos desde el backend
+
+
+        let thumbnails = {
+            'thumb': '',
+            'full': '',
+            'large': '',
+            'medium': '',
+            'small': '',
+        };
+
+        mediaThumbnail.forEach((thumbnail) => {
+
+            let url = thumbnail['@attributes'].url;
+
+            if (url.includes('thumb')) {
+
+                thumbnails.thumb = {
+                    'url': thumbnail['@attributes'].url,
+                    'width': thumbnail['@attributes'].width,
+                    'height': thumbnail['@attributes'].heigh,
+                }
+
+            } else if (url.includes('full')) {
+
+                thumbnails.full = {
+                    'url': thumbnail['@attributes'].url,
+                    'width': thumbnail['@attributes'].width,
+                    'height': thumbnail['@attributes'].heigh,
+                }
+
+            } else if (url.includes('large')) {
+
+                thumbnails.large = {
+                    'url': thumbnail['@attributes'].url,
+                    'width': thumbnail['@attributes'].width,
+                    'height': thumbnail['@attributes'].heigh,
+                }
+
+            } else if (url.includes('medium')) {
+
+                thumbnails.medium = {
+                    'url': thumbnail['@attributes'].url,
+                    'width': thumbnail['@attributes'].width,
+                    'height': thumbnail['@attributes'].heigh,
+                }
+
+            } else if (url.includes('small')) {
+
+                thumbnails.small = {
+                    'url': thumbnail['@attributes'].url,
+                    'width': thumbnail['@attributes'].width,
+                    'height': thumbnail['@attributes'].heigh,
+                }
+
+            }
+
+
+        });
+
+        return thumbnails;
+    }
+
+    async getVersions(availableVersionsRefs) {
+
+        for (let i = 0; i < availableVersionsRefs.length; i++) {
+            const versionRef = availableVersionsRefs[i];
+            let versionDoc = await getDoc(versionRef);
+
+            this.availableVersions.push({
+                reference: versionRef,
+                data: versionDoc.data()
+            });
+
+        }
+
+        this.version = this.availableVersions[0];
     }
 }
 
@@ -364,36 +541,47 @@ class EpisodeView {
     populate(episode) {
         this.episodeCard = EpisodeView.episodeCardPrototype.cloneNode(true);
         this.episodeCard.querySelector('.episodeViewNowButton').innerText = 'Ver ahora';
-        this.episodeCard.querySelector('.episodeThumbnail').src = episode.thumbnail;
+        this.episodeCard.querySelector('.episodeThumbnail').src = episode.thumbnails.full.url;
         this.episodeCard.querySelector('.episodeTitle').innerText = episode.title;
         this.episodeCard.querySelector('.episodeNumber').innerText = episode.number;
 
-        episode.availableVersions.forEach(
-            (version) => {
-                let episodeVersion = document.createElement('option');
-                episodeVersion.value = version;
+        // Only for debug (según el modelo de datos availableVersions debería estar siempre definido)
+        // en datos antiguos todavía no lo esta.
+        // 
 
-                this.episodeCard.querySelector('.episodeVersions').append(episodeVersion);
-            }
-        );
+        for (let i = 0; i < episode.availableVersions.length; i++) {
+            const availableVersion = episode.availableVersions[i];
+
+            let episodeVersion = document.createElement('option');
+            episodeVersion.value = availableVersion.data.title;
+            episodeVersion.innerText = availableVersion.data.title;
+
+            this.episodeCard.querySelector('.episodeVersions').append(episodeVersion);
+        }
+        // Seleccionar la versión actual del episodio en el select
+        this.selectVersion(episode.version);
 
         EpisodeView.episodesContainer.append(this.episodeCard);
 
     }
 
     update(episode) {
-        this.episodeCard.querySelector('.episodeThumbnail').src = episode.thumbnail;
+        this.episodeCard.querySelector('.episodeThumbnail').src = episode.thumbnails.full.url;
         this.episodeCard.querySelector('.episodeTitle').innerText = episode.title;
         this.episodeCard.querySelector('.episodeNumber').innerText = episode.number;
 
-        episode.availableVersions.forEach(
-            (version) => {
-                let episodeVersion = document.createElement('option');
-                episodeVersion.value = version;
+        for (let i = 0; i < episode.availableVersions.length; i++) {
+            const availableVersion = episode.availableVersions[i];
 
-                this.episodeCard.querySelector('.episodeVersions').append(episodeVersion);
-            }
-        );
+            let episodeVersion = document.createElement('option');
+            episodeVersion.value = availableVersion.data.title;
+            episodeVersion.innerText = availableVersion.data.title;
+
+            this.episodeCard.querySelector('.episodeVersions').append(episodeVersion);
+        }
+
+        // Seleccionar la versión actual del episodio en el select
+        this.selectVersion(episode.version);
 
     }
 
@@ -405,6 +593,16 @@ class EpisodeView {
         // TODO: Tornar la episodeCard al color por defecto
     }
 
+    selectVersion(version) {
+        console.log('Versión en select version', version);
+        if (version) {
+            let optionValue = version.data.title;
+            let optionNode = this.episodeCard.querySelector(`.episodeVersions [value="${optionValue}"]`);
+            optionNode.setAttribute("selected", "");
+
+        }
+    }
+
 
 }
 
@@ -413,8 +611,29 @@ class EpisodeController {
         this.episode = episode;
         this.episodeView = episodeView;
 
-        this.episode.registerObserver(this.episodeView);
         this.episodeView.populate(this.episode.copy());
+        this.episode.registerObserver(this.episodeView);
+    }
+
+    static init() {
+        EpisodeController.episodes = [];
+    }
+
+    static showEpisodes() {
+        EpisodeController.orderEpisodes();
+        EpisodeController.episodes.forEach(
+            (episodeComponent) => {
+                EpisodeView.episodesContainer.append(episodeComponent.view.episodeCard);
+            }
+        )
+    }
+
+    static orderEpisodes() {
+        EpisodeController.episodes.sort(function(episodeA, episodeB) {
+
+            return episodeA.model.premiumPubDate - episodeB.model.premiumPubDate;
+
+        })
     }
 
     changeVersion() {
@@ -433,10 +652,16 @@ class EpisodeController {
     unsubscribeFromAnimeVersion() {
         // TODO: Desuscribirse de la versión del anime actual
     }
+
+
 }
 
 window.addEventListener("load", function() {
+    // Estos inits inicializan variables
     AnimeView.init();
     EpisodeView.init();
+    EpisodeController.init();
+
+    // Este init obtiene todos los datos
     AnimeController.init();
 });
