@@ -1,92 +1,20 @@
-// const episodesContainer = document.getElementById('last-episodes-container');
-// const lastAnimesContainer = document.getElementById('last-animes-container');
-// const simulcastAnimesContainer = document.getElementById('simulcast-animes-container');
-
-// var animesEnEmision;
-// var lastAnimes;
-// var lastEpisodes;
-
-// fetch('https://cdn.jsdelivr.net/gh/GaelCodes/MyAnime/DB_Animes/animes-news.json')
-//     .then(response => response.json())
-//     .then(
-
-//         animeNews => {
-
-//             lastEpisodes = animeNews['lastEpisodes'];
-//             lastAnimes = animeNews['lastAnimes'];
-//             animesEnEmision = animeNews['animesEnEmision'];
-
-//             animesEnEmision.forEach(
-//                 anime => {
-//                     simulcastAnimesContainer.innerHTML += `<li>${anime}</li>`
-//                 }
-//             );
-
-//             lastEpisodes.forEach(
-//                 anime => {
-
-//                     episodesContainer.innerHTML +=
-//                         `
-//                                 <a href="episodio/episodio.html?anime=${anime.titulo_}&capitulo=${anime.capitulo}" class="card bg-transparent border-0 p-2 col-12 col-sm-6 col-md-6 col-lg-3">
-//                                 <div class="aspect-ratio-thumbnail">
-//                                     <img src="${anime.thumbnail}" class="card-img-top" alt="Image not found">
-
-//                                     <div class="card-img-overlay d-flex flex-column justify-content-end pb-0">
-//                                         <h5 class="anime-title card-title text-white">${anime.titulo}</h5>
-//                                         <h6 class="badge mb-2 text-dark bg-info">Episodio ${anime.capitulo}</h6>
-//                                     </div>
-//                                 </div>
-
-//                                 </a>
-//                             `;
-
-//                 }
-//             );
-
-//             lastAnimes.forEach(
-//                 anime => {
-
-//                     lastAnimesContainer.innerHTML +=
-//                         `
-//                             <div class="card bg-transparent border-0 p-2 col-12 col-sm-6 col-md-6 col-lg-3">
-//                                 <div class="aspect-ratio-cartel">
-//                                 <img src="assets/${anime.cartel}" class="card-img-top" alt="Image not found">
-//                                 <div class="card-img-overlay d-flex flex-column justify-content-end align-items-center">
-//                                     <h5 class="card-title text-white">${anime.titulo}</h5>
-//                                 </div>
-//                                 </div>
-//                             </div>`;
-
-//                 }
-//             );
-
-//         })
-//     .catch(error => {
-//         console.log(`Something was wrong : ${error}`);
-//     });
-
-// Obtengo el manejador de la BBDD de firestore
-// const db = getFirestore();
-
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-analytics.js";
-import {
-    getFirestore,
-    collection,
-    getDocs,
-    getDoc
-} from "https://www.gstatic.com/firebasejs/9.6.2/firebase-firestore.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-app.js"
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-analytics.js"
+import { getFirestore, collection, getDocs, getDoc, doc, setDoc } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-firestore.js"
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, sendEmailVerification } from "https://www.gstatic.com/firebasejs/9.6.3/firebase-auth.js"
 
 const firebaseConfig = {
     apiKey: "AIzaSyChDe5Ij8qSosKa8R3ProyVPHuOvNqDQZw",
-    authDomain: "my-anime-499f8.firebaseapp.com",
     projectId: "my-anime-499f8",
     appId: "1:913818762906:web:a43521afcb1f841492e923",
+    authDomain: "my-anime-499f8.firebaseapp.com",
     measurementId: "G-1841NZKRHL",
 };
+
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
-const db = getFirestore();
+const db = getFirestore(app);
+const auth = getAuth(app);
 
 class Anime {
     constructor(title, platform, description, audio, mediaThumbnails) {
@@ -152,7 +80,9 @@ class Anime {
         }
     }
 
-
+    updatedUser() {
+        this.notifyAll();
+    }
 }
 
 class AnimeView {
@@ -163,16 +93,29 @@ class AnimeView {
         // Inicio Creación del prototipo de la animeCard
         AnimeView.animeCardPrototype = document.createElement("li");
         AnimeView.animeCardPrototype.classList.add('animeCard');
+
         let animeVersions = document.createElement("select");
         animeVersions.classList.add("animeVersions");
+
         let animeThumbnail = document.createElement("img");
         animeThumbnail.classList.add("animeThumbnail");
+
         let animeDescription = document.createElement("p");
         animeDescription.classList.add("animeDescription");
+
         let animeAudio = document.createElement("p");
         animeAudio.classList.add("animeAudio");
+
         let animeSubtitles = document.createElement("p");
         animeSubtitles.classList.add("animeSubtitles");
+
+        let animeSubscriptionText = document.createElement("p");
+        animeSubscriptionText.innerText = 'Subscribete a este maravilloso anime';
+        animeSubscriptionText.classList.add('animeSubscriptionText');
+        let animeSubscriptionBox = document.createElement("input");
+        animeSubscriptionBox.type = "checkbox";
+        animeSubscriptionBox.classList.add("animeSubscriptionBox");
+
         let animePlatformButton = document.createElement("button");
         animePlatformButton.classList.add("animePlatformButton");
 
@@ -181,6 +124,8 @@ class AnimeView {
         AnimeView.animeCardPrototype.append(animeDescription);
         AnimeView.animeCardPrototype.append(animeAudio);
         AnimeView.animeCardPrototype.append(animeSubtitles);
+        AnimeView.animeCardPrototype.append(animeSubscriptionText);
+        AnimeView.animeCardPrototype.append(animeSubscriptionBox);
         AnimeView.animeCardPrototype.append(animePlatformButton);
         // Fin Creación del prototipo de la animeCard
     }
@@ -200,6 +145,23 @@ class AnimeView {
         // 
         // Las versiones del anime se obtendrán en tiempos distintos
         // estableceré las versiones en el update en cuanto se hayan obtenido
+
+
+        // Mostrar o ocultar el checkbox dependiendo de si el usuario
+        // está loggeado o no
+        if (myAnimeUser.status === 'logged') {
+            let animeSubscriptionBox = this.animeCard.querySelector('.animeSubscriptionBox');
+            animeSubscriptionBox.removeAttribute('disabled');
+            let animeSubscriptionText = this.animeCard.querySelector('.animeSubscriptionText');
+            animeSubscriptionText.classList.remove('text-muted');
+
+        } else if (myAnimeUser.status === 'non-logged') {
+            let animeSubscriptionBox = this.animeCard.querySelector('.animeSubscriptionBox');
+            animeSubscriptionBox.setAttribute('disabled', '');
+            let animeSubscriptionText = this.animeCard.querySelector('.animeSubscriptionText');
+            animeSubscriptionText.classList.add('text-muted');
+        }
+
 
         AnimeView.animeContainer.append(this.animeCard);
     }
@@ -230,6 +192,22 @@ class AnimeView {
                 animeVersion.innerText = version.title;
                 this.animeCard.querySelector(".animeVersions").append(animeVersion);
             });
+        }
+
+
+        // Mostrar o ocultar el checkbox dependiendo de si el usuario
+        // está loggeado o no
+        if (myAnimeUser.status === 'logged') {
+            let animeSubscriptionBox = this.animeCard.querySelector('.animeSubscriptionBox');
+            animeSubscriptionBox.removeAttribute('disabled');
+            let animeSubscriptionText = this.animeCard.querySelector('.animeSubscriptionText');
+            animeSubscriptionText.classList.remove('text-muted');
+
+        } else if (myAnimeUser.status === 'non-logged') {
+            let animeSubscriptionBox = this.animeCard.querySelector('.animeSubscriptionBox');
+            animeSubscriptionBox.setAttribute('disabled', '');
+            let animeSubscriptionText = this.animeCard.querySelector('.animeSubscriptionText');
+            animeSubscriptionText.classList.add('text-muted');
         }
     }
 }
@@ -281,6 +259,10 @@ class AnimeController {
                 let animeView = new AnimeView();
                 let animeController = new AnimeController(anime, animeView);
 
+                // Registro a los animes como observers de myAnimeUser
+                // En caso que el status de myAnimeUser cambie, los animes también tienen que cambiar
+                myAnimeUser.registerObserver(anime);
+
                 // Obtener todas las versiones del anime
 
                 getDocs(collection(db, `animes/${anime.title}/versions`)).then(
@@ -321,6 +303,13 @@ class AnimeController {
                                     let episode = new Episode(episodeData.title, episodeData.availableVersions, episodeData.number, episodeData.link, episodeData.mediaThumbnail, episodeData.premiumPubDate, episodeData.freePubDate);
                                     let episodeView = new EpisodeView();
                                     let episodeController = new EpisodeController(episode, episodeView);
+
+                                    // Registro a los episodes como observers de myAnimeUser
+                                    // En caso que el status de myAnimeUser cambie, los episodes también tienen que cambiar
+                                    myAnimeUser.registerObserver(episode);
+
+                                    // Guardo los episodios para después ordenarlos y 
+                                    // mostrarlos en orden
                                     EpisodeController.episodes.push({ 'model': episode, 'view': episodeView, 'controller': episodeController });
                                 }
                             );
@@ -427,6 +416,10 @@ class Episode {
         }
     }
 
+    updatedUser() {
+        this.notifyAll();
+    }
+
     filterThumbnails(mediaThumbnail) {
         // TODO: Es necesario formatear los datos desde el backend
 
@@ -516,24 +509,40 @@ class EpisodeView {
     static init() {
 
         EpisodeView.episodesContainer = document.getElementById('last-episodes');
+
         // Inicio creación prototipo episodeCard
         EpisodeView.episodeCardPrototype = document.createElement('li');
         EpisodeView.episodeCardPrototype.classList.add('episodeCard');
-        let episodeViewNowButton = document.createElement('button');
-        episodeViewNowButton.classList.add('episodeViewNowButton');
-        let episodeThumbnail = document.createElement('img');
-        episodeThumbnail.classList.add('episodeThumbnail');
-        let episodeTitle = document.createElement('p');
-        episodeTitle.classList.add('episodeTitle');
-        let episodeNumber = document.createElement('p');
-        episodeNumber.classList.add('episodeNumber');
+
         let episodeVersions = document.createElement('select');
         episodeVersions.classList.add('episodeVersions');
+
+        let episodeThumbnail = document.createElement('img');
+        episodeThumbnail.classList.add('episodeThumbnail');
+
+        let episodeTitle = document.createElement('p');
+        episodeTitle.classList.add('episodeTitle');
+
+        let episodeNumber = document.createElement('p');
+        episodeNumber.classList.add('episodeNumber');
+
+        let episodeSubscriptionText = document.createElement("p");
+        episodeSubscriptionText.innerText = 'Subscribete a este maravilloso anime';
+        episodeSubscriptionText.classList.add('episodeSubscriptionText');
+
+        let episodeSubscriptionBox = document.createElement("input");
+        episodeSubscriptionBox.type = "checkbox";
+        episodeSubscriptionBox.classList.add("episodeSubscriptionBox");
+
+        let episodeViewNowButton = document.createElement('button');
+        episodeViewNowButton.classList.add('episodeViewNowButton');
 
         EpisodeView.episodeCardPrototype.append(episodeVersions);
         EpisodeView.episodeCardPrototype.append(episodeThumbnail);
         EpisodeView.episodeCardPrototype.append(episodeTitle);
         EpisodeView.episodeCardPrototype.append(episodeNumber);
+        EpisodeView.episodeCardPrototype.append(episodeSubscriptionBox);
+        EpisodeView.episodeCardPrototype.append(episodeSubscriptionText);
         EpisodeView.episodeCardPrototype.append(episodeViewNowButton);
         // Fin creación prototipo episodeCard
     }
@@ -561,6 +570,22 @@ class EpisodeView {
         // Seleccionar la versión actual del episodio en el select
         this.selectVersion(episode.version);
 
+        // Mostrar o ocultar el checkbox dependiendo de si el usuario
+        // está loggeado o no
+        if (myAnimeUser.status === 'logged') {
+            let episodeSubscriptionBox = this.episodeCard.querySelector('.episodeSubscriptionBox');
+            episodeSubscriptionBox.removeAttribute('disabled');
+            let episodeSubscriptionText = this.episodeCard.querySelector('.episodeSubscriptionText');
+            episodeSubscriptionText.classList.remove('text-muted');
+
+        } else if (myAnimeUser.status === 'non-logged') {
+            let episodeSubscriptionBox = this.episodeCard.querySelector('.episodeSubscriptionBox');
+            episodeSubscriptionBox.setAttribute('disabled', '');
+            let episodeSubscriptionText = this.episodeCard.querySelector('.episodeSubscriptionText');
+            episodeSubscriptionText.classList.add('text-muted');
+
+        }
+
         EpisodeView.episodesContainer.append(this.episodeCard);
 
     }
@@ -583,6 +608,24 @@ class EpisodeView {
         // Seleccionar la versión actual del episodio en el select
         this.selectVersion(episode.version);
 
+
+        // Mostrar o ocultar el checkbox dependiendo de si el usuario
+        // está loggeado o no
+        if (myAnimeUser.status === 'logged') {
+            console.log('User en update del episode :', myAnimeUser);
+            let episodeSubscriptionBox = this.episodeCard.querySelector('.episodeSubscriptionBox');
+            episodeSubscriptionBox.removeAttribute('disabled', '');
+            let episodeSubscriptionText = this.episodeCard.querySelector('.episodeSubscriptionText');
+            episodeSubscriptionText.classList.remove('text-muted');
+
+        } else if (myAnimeUser.status === 'non-logged') {
+            let episodeSubscriptionBox = this.episodeCard.querySelector('.episodeSubscriptionBox');
+            episodeSubscriptionBox.setAttribute('disabled', '');
+            let episodeSubscriptionText = this.episodeCard.querySelector('.episodeSubscriptionText');
+            episodeSubscriptionText.classList.add('text-muted');
+
+        }
+
     }
 
     episodeCardDisable() {
@@ -594,7 +637,10 @@ class EpisodeView {
     }
 
     selectVersion(version) {
-        console.log('Versión en select version', version);
+        // Útil para cambiar versiones
+        // Ejecutar en la expulsión del evento change del select para actualizar el 
+        // atributo version del modelo
+
         if (version) {
             let optionValue = version.data.title;
             let optionNode = this.episodeCard.querySelector(`.episodeVersions [value="${optionValue}"]`);
@@ -613,6 +659,15 @@ class EpisodeController {
 
         this.episodeView.populate(this.episode.copy());
         this.episode.registerObserver(this.episodeView);
+    }
+
+    static set userStatus(newUserStatus) {
+        this._userStatus = newUserStatus;
+        EpisodeController.notifyAllEpisodes();
+    }
+
+    static get userStatus() {
+        return this._userStatus;
     }
 
     static init() {
@@ -652,15 +707,309 @@ class EpisodeController {
     unsubscribeFromAnimeVersion() {
         // TODO: Desuscribirse de la versión del anime actual
     }
+}
 
+class User {
+    constructor() {
+        this.observers = [];
+        this.email = '';
+        this.id = '';
+        this.status = 'non-logged';
+        this.subscriptions = []
+    }
+
+    set status(status) {
+        this._status = status;
+        this.notifyAll();
+    }
+
+    get status() {
+        return this._status;
+    }
+
+    set subscriptions(subscriptions) {
+        this._subscriptions = subscriptions;
+        this.notifyAll();
+    }
+
+    get subscriptions() {
+        return this._subscriptions;
+    }
+
+    registerObserver(observer) {
+        this.observers.push(observer);
+    }
+
+    unregisterObserver(observer) {
+        let observerIndex = this.observers.findIndex(observer);
+        this.observers.splice(observerIndex, 1);
+    }
+
+    copy() {
+        return {
+            status: this.status,
+            subscriptions: this.subscriptions
+        }
+    }
+
+    notifyAll() {
+        for (let i = 0; i < this.observers.length; i++) {
+            const observer = this.observers[i];
+            observer.updatedUser();
+
+        }
+    }
+}
+
+class UserController {
+    constructor() {
+
+    }
+
+    static init() {
+        // Control del estado de la sesión
+        UserController.controlLoginStatus();
+
+        // Login
+        UserController.showLoginModalButton = document.getElementById('showLoginModalButton');
+        UserController.loginModal = document.getElementById('loginModal');
+        UserController.loginForm = document.getElementById('loginForm');
+        UserController.inputLoginEmail = document.getElementById('inputLoginEmail');
+        UserController.inputLoginPassword = document.getElementById('inputLoginPassword');
+        UserController.loginButton = document.getElementById('loginButton');
+
+        UserController.showLoginModalButton.addEventListener('click', UserController.showLoginModal);
+        UserController.loginModal.addEventListener('keyup', UserController.logIn);
+        UserController.loginButton.addEventListener('click', UserController.logIn);
+
+        // Register
+
+        UserController.showRegisterModalButton = document.getElementById('showRegisterModalButton');
+        UserController.registerModal = document.getElementById('registerModal');
+        UserController.registerForm = document.getElementById('registerForm');
+        UserController.inputRegisterEmail = document.getElementById('inputRegisterEmail');
+        UserController.inputRegisterPassword = document.getElementById('inputRegisterPassword');
+        UserController.inputRegisterPassword2 = document.getElementById('inputRegisterPassword2');
+        UserController.registerButton = document.getElementById('registerButton');
+
+        UserController.showRegisterModalButton.addEventListener('click', UserController.showRegisterModal);
+        UserController.registerModal.addEventListener('keyup', UserController.register);
+        UserController.registerButton.addEventListener('click', UserController.register);
+
+        // Logout
+        UserController.logoutButton = document.getElementById('logoutButton');
+        UserController.logoutButton.addEventListener('click', UserController.logOut);
+    }
+
+    static controlLoginStatus() {
+        onAuthStateChanged(auth, async function(user) {
+            if (user) {
+                console.log("User is logged");
+                // User is signed in, see docs for a list of available properties
+                // https://firebase.google.com/docs/reference/js/firebase.User
+
+                myAnimeUser.id = user.uid;
+                myAnimeUser.email = user.email;
+                myAnimeUser.status = 'logged';
+                // TODO: Rename to showLoggedUserNavbar
+                UserController.showLoggedUserNavbar(user);
+
+                // TODO: Obtener la lista de subscripciones
+                // let userData = await getDoc(`users/${myAnimeUser.id}`);
+                // userData = userData.data();
+                // myAnimeUser.subscriptions = userData.subscriptions;
+
+
+
+            } else {
+                console.log('User isn\'t logged');
+                // User is signed out
+
+                // TODO: Rename to showNonLoggedUserNavbar
+                UserController.showNonLoggedUserNavbar();
+
+                myAnimeUser.subscriptions = [];
+                myAnimeUser.status = 'non-logged';
+            }
+        });
+    }
+
+    static showLoggedUserNavbar(user) {
+        // Oculto los botones "Login" y "Registro"
+        UserController.showRegisterModalButton.classList.add('hide');
+        UserController.showLoginModalButton.classList.add('hide');
+
+        // Muestro el botón de Desconectar
+        UserController.logoutButton.classList.remove('hide');
+    }
+
+    static showNonLoggedUserNavbar() {
+        // Oculto el botón de Desconectar
+        UserController.logoutButton.classList.add('hide');
+
+        // Muestro los botones "Login" y "Registro"
+        UserController.showRegisterModalButton.classList.remove('hide');
+        UserController.showLoginModalButton.classList.remove('hide');
+    }
+
+    static showLoginModal() {
+        // Show modal, 
+        console.log('Mostrando modal login');
+    }
+
+    static showRegisterModal() {
+        // Show modal, 
+        console.log('Mostrando modal registro');
+    }
+
+    static hideLoginModal() {
+        // Show modal, 
+        console.log('Ocultando modal login');
+
+        const myClick = new MouseEvent('click', {
+            view: window,
+            bubbles: true,
+            cancelable: true
+        });
+        let closeModalButton = document.getElementById('dismissLoginModalButton');
+        closeModalButton.dispatchEvent(myClick);
+    }
+
+    static hideRegisterModal() {
+        // Show modal, 
+        console.log('Ocultando modal login');
+
+        const myClick = new MouseEvent('click', {
+            view: window,
+            bubbles: true,
+            cancelable: true
+        });
+        let closeModalButton = document.getElementById('dismissRegisterModalButton');
+        closeModalButton.dispatchEvent(myClick);
+    }
+
+    static logIn(e) {
+
+        console.log('Trying to login');
+
+        if (e.keyCode === 13 || e.type === "click") {
+
+            let email = UserController.inputLoginEmail.value;
+            let password = UserController.inputLoginPassword.value;
+
+            signInWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    // Signed in
+                    const user = userCredential.user;
+                    // ...
+                    console.log('Logeado correctamente');
+                    UserController.loginForm.reset();
+                    UserController.hideLoginModal();
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    console.log('Logeado INcorrectamente');
+                });
+
+        }
+
+    }
+
+    static logOut() {
+
+        console.log('Trying to logout');
+        // Firestore desconectame
+        signOut(auth).then(() => {
+            // Sign-out successful.
+            console.log('DESLogeado correctamente');
+        }).catch((error) => {
+            // An error happened.
+            console.log('DESLogeado INcorrectamente');
+        });
+
+    }
+
+    static register(e) {
+
+        console.log('Trying to register', e);
+
+        if (e.keyCode === 13 || e.type === "click") {
+
+            let email = UserController.inputRegisterEmail.value;
+            let password = UserController.inputRegisterPassword.value;
+            let password2 = UserController.inputRegisterPassword2.value;
+
+            if (password === password2) {
+
+                createUserWithEmailAndPassword(auth, email, password)
+                    .then((userCredential) => {
+                        // Signed in
+                        myAnimeUser.id = userCredential.user.uid;
+                        myAnimeUser.email = userCredential.user.email;
+                        console.log('Datos del usuario recien registrado: ', userCredential);
+                        // const user = userCredential.user;
+                        UserController.registerForm.reset();
+                        UserController.hideRegisterModal();
+                        UserController.sendEmailVerification();
+                        UserController.createUserDocument();
+
+                    })
+                    .catch((error) => {
+                        const errorCode = error.code;
+                        const errorMessage = error.message;
+                        console.log('Register failed!');
+                        console.log('Código de error: ', errorCode);
+                        console.log('Mensaje de error: ', errorMessage);
+
+                    });
+
+            } else {
+                console.log('Las passwords deben ser iguales');
+
+            }
+
+        }
+
+    }
+
+    static createUserDocument() {
+        return setDoc(doc(db, "users", myAnimeUser.id), {
+            email: myAnimeUser.email,
+            subscriptions: myAnimeUser.subscriptions
+        });
+    }
+
+    static sendEmailVerification() {
+        console.log('Trying to send email verification');
+        sendEmailVerification(auth.currentUser)
+            .then(() => {
+                // Email verification sent!
+                // ...
+                console.log('Email verification sent!');
+            }).catch(() => {
+                // Email verification not sent!
+                // ...
+                console.log('Email verification not sent!');
+            });
+    }
 
 }
+
+// Variable que se usará en todo lo largo de la aplicación
+// para acceder a datos del usuario
+// 
+var myAnimeUser;
 
 window.addEventListener("load", function() {
     // Estos inits inicializan variables
     AnimeView.init();
     EpisodeView.init();
     EpisodeController.init();
+
+    // Creo el objeto User que cumplimentararé luego en UserController.init()
+    myAnimeUser = new User();
+    UserController.init();
 
     // Este init obtiene todos los datos
     AnimeController.init();

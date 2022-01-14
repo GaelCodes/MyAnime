@@ -43,8 +43,99 @@
                         <a class="nav-link" href="#">TODOS LOS ANIMES</a>
                     </li>
                 </ul>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <!-- Button trigger Login Modal -->
+                        <button id="showLoginModalButton" type="button" class="hide btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#loginModal">
+                            <i class="bi bi-person h4"></i>
+                        </button>
+
+                        <!-- Login Modal -->
+                        <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Iniciar Sesión</h5>
+                                        <button id="dismissLoginModalButton" type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" aria-label="Close">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
+                                                <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
+                                              </svg>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form id="loginForm">
+                                            <div class="mb-3">
+                                                <label for="inputLoginEmail" class="form-label">Email</label>
+                                                <input type="email" class="form-control" id="inputLoginEmail" aria-describedby="emailHelp">
+                                                <div id="emailHelp" class="form-text">No compartiremos tu email con nadie más. <a href="#" class="form-text"> Política de privacidad </a> </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="inputLoginPassword" class="form-label">Contraseña</label>
+                                                <input type="password" class="form-control" id="inputLoginPassword">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancelar</button>
+                                        <button id="loginButton" type="button" class="btn btn-outline-success">Conectar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Button trigger Register Modal -->
+                        <button id="showRegisterModalButton" type="button" class="hide btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#registerModal">
+                            REGISTRO
+                        </button>
+
+                        <!-- Register Modal -->
+                        <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Registro</h5>
+                                        <button id="dismissRegisterModalButton" type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" aria-label="Close">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                                                                        <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
+                                                                        <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
+                                                                      </svg>
+                                                                </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form id="registerForm">
+                                            <div class="mb-3">
+                                                <label for="inputRegisterEmail" class="form-label">Email</label>
+                                                <input type="email" class="form-control" id="inputRegisterEmail" aria-describedby="emailHelp">
+                                                <div id="emailHelp" class="form-text">No compartiremos tu email con nadie más. <a href="#" class="form-text"> Política de privacidad </a> </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="inputRegisterPassword" class="form-label">Contraseña</label>
+                                                <input type="password" class="form-control" id="inputRegisterPassword">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="inputRegisterPassword2" class="form-label">Contraseña</label>
+                                                <input type="password" class="form-control" id="inputRegisterPassword2">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancelar</button>
+                                        <button id="registerButton" type="button" class="btn btn-outline-success">Registrar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Button trigger Logout -->
+                        <button id="logoutButton" class="hide btn btn-outline-success" type="submit">
+                            Desconectar
+                        </button>
+
+                    </li>
+                </ul>
                 <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Buscar</button>
                 </form>
             </div>
@@ -136,7 +227,7 @@
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
     <!-- My App Code -->
-    <!-- <script src="js/app.js" type="module"></script> -->
+    <script src="js/app.js" type="module"></script>
 </body>
 
 </html>

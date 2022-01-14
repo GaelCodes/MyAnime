@@ -9,6 +9,62 @@ nav {
     box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.82);
 }
 
+nav .nav-link {
+    font-weight: bolder;
+}
+
+nav .hide {
+    display: none !important;
+}
+
+nav #showRegisterModalButton {
+    font-weight: normal;
+    line-height: 1.2;
+    font-size: 1rem;
+    height: 100%;
+}
+
+nav #loginModal {
+    color: white;
+}
+
+#loginModal .modal-content {
+    background-color: rgba(25, 20, 47, 255);
+}
+
+#loginModal #inputLoginEmail {
+    background-color: rgba(255, 255, 255, 0.397);
+    border: none;
+    color: white;
+}
+
+#loginModal #inputLoginPassword {
+    background-color: rgba(255, 255, 255, 0.397);
+    border: none;
+    color: white;
+}
+
+nav #registerModal {
+    color: white;
+}
+
+#registerModal .modal-content {
+    background-color: rgba(25, 20, 47, 255);
+}
+
+#registerModal #inputRegisterEmail {
+    background-color: rgba(255, 255, 255, 0.397);
+    border: none;
+    color: white;
+}
+
+#registerModal #inputRegisterPassword,
+#registerModal #inputRegisterPassword2 {
+    background-color: rgba(255, 255, 255, 0.397);
+    border: none;
+    color: white;
+}
+
 nav [type="search"] {
     background-color: rgba(255, 255, 255, 0.397);
     border: none;
@@ -36,10 +92,6 @@ nav [type="search"]:-ms-input-placeholder {
 nav [type="search"]::-ms-input-placeholder {
     /* Microsoft Edge */
     color: white;
-}
-
-.nav-link {
-    font-weight: bolder;
 }
 
 
