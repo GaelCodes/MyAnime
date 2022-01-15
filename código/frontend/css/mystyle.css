@@ -65,33 +65,27 @@ nav #registerModal {
     color: white;
 }
 
-nav [type="search"] {
-    background-color: rgba(255, 255, 255, 0.397);
-    border: none;
-    color: white !important;
-}
-
-nav [type="search"]:focus {
-    background-color: rgba(255, 255, 255, 0.397);
-    border: none;
-    color: white !important;
-}
-
-nav [type="search"]::placeholder {
-    /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: white;
-    opacity: 1;
-    /* Firefox */
-}
-
-nav [type="search"]:-ms-input-placeholder {
-    /* Internet Explorer 10-11 */
-    color: white;
-}
-
+nav [type="search"],
+nav [type="search"]:focus,
+nav [type="search"]::placeholder,
+nav [type="search"]:-ms-input-placeholder,
 nav [type="search"]::-ms-input-placeholder {
-    /* Microsoft Edge */
-    color: white;
+    background-color: rgba(255, 255, 255, 0.397)!important;
+    border: none;
+    /* Chrome, Firefox, Opera, Safari 10.1+, Internet Explorer 10-11, Microsoft Edge */
+    color: rgb(77, 77, 77) !important;
+    opacity: 1;
+}
+
+
+/* Overlapping boostrap */
+
+nav [type="search"].form-control:disabled,
+nav [type="search"].form-control[readonly] {
+    background-color: rgba(255, 255, 255, 0.397)!important;
+    color: rgb(77, 77, 77) !important;
+    opacity: 1;
+    border: none;
 }
 
 
@@ -106,7 +100,7 @@ nav [type="search"]::-ms-input-placeholder {
 }
 
 body {
-    background-color: #11203edb!important;
+    background: linear-gradient(0deg, rgb(26 21 40) 0%, rgb(63 55 96) 20%);
     color: #e6e6e6 !important;
 }
 
@@ -133,6 +127,11 @@ h2 {
     background-color: rgb(70, 3, 146);
     -webkit-box-shadow: 6px 4px 2px 0px #0000005c;
     box-shadow: 6px 4px 2px 0px #0000005c;
+    color: gray;
+}
+
+.animeCard .animeIndex {
+    color: white;
 }
 
 .animeCard .animeVersions {
@@ -172,9 +171,44 @@ h2 {
     box-shadow: inset 0px 0px 0px 0px #F0F0F0;
 }
 
+.animeCard .animeSubscriptionDiv {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.animeSubscriptionDiv .animeSubscriptionText {
+    flex-basis: 90%;
+    margin: 0;
+}
+
+.animeSubscriptionDiv .animeSubscriptionBox {
+    flex-basis: 10%;
+    /* Double-sized Checkboxes */
+    -ms-transform: scale(1.5);
+    /* IE */
+    -moz-transform: scale(1.5);
+    /* FF */
+    -webkit-transform: scale(1.5);
+    /* Safari and Chrome */
+    -o-transform: scale(1.5);
+    /* Opera */
+    transform: scale(1.5);
+    padding: 5px;
+}
+
 .animeCard .animePlatformButton {
+    background-color: #433699;
+    color: white;
+    padding: 0.6em;
+    border-radius: 1em;
     border: none;
-    border-radius: 0.2em;
+    letter-spacing: 2px;
+}
+
+.animeCard .animePlatformButton:hover {
+    background-color: #594f99;
 }
 
 #last-episodes {
@@ -185,13 +219,25 @@ h2 {
 #last-episodes .episodeCard {
     display: flex;
     flex-flow: column nowrap;
+    justify-content: flex-end !important;
     padding: 1em;
     margin: 0.5em 0;
     border-radius: 1em;
     /* Only for debug */
-    background-color: rgb(177, 80, 1);
+    background-color: #181146;
     -webkit-box-shadow: 6px 4px 2px 0px #0000005c;
     box-shadow: 6px 4px 2px 0px #0000005c;
+    color: gray;
+}
+
+
+/* .episodeCard>* {
+    margin-top: auto !important;
+} */
+
+.episodeCard .episodeIndex {
+    color: white;
+    max-width: 100%;
 }
 
 .episodeCard .episodeVersions {
@@ -202,10 +248,93 @@ h2 {
     border: 1px black solid;
 }
 
+.episodeCard .episodeDatesDiv {
+    display: flex;
+}
+
+.episodeDatesDiv .episodeFreeDateDiv {
+    display: inline-block;
+    width: 50%;
+}
+
+.episodeDatesDiv .episodePremiumDateDiv {
+    display: inline-block;
+    width: 50%;
+}
+
+.episodeCard .episodeLanguagesDiv {
+    display: flex;
+    margin-bottom: auto;
+}
+
+.episodeLanguagesDiv .episodeAudioDiv {
+    display: inline-block;
+    height: 100%;
+    width: 30%;
+}
+
+.episodeLanguagesDiv .episodeSubtitlesDiv {
+    display: inline-block;
+    width: 70%;
+}
+
+.episodeSubtitlesDiv .episodeSubtitles {
+    list-style: none;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    padding: 0 !important;
+}
+
+.episodeSubtitles .episodeSubtitle {
+    display: inline-block;
+    font-size: 0.8em;
+    background-color: rgba(83, 83, 83, 0.336);
+    border-radius: 1em;
+    padding: 0 0.75em;
+    margin-top: 2px;
+    margin-right: 2px;
+    white-space: nowrap;
+}
+
+.episodeCard .episodeSubscriptionDiv {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.episodeSubscriptionDiv .episodeSubscriptionBox {
+    flex-basis: 10%;
+    /* Double-sized Checkboxes */
+    -ms-transform: scale(1.5);
+    /* IE */
+    -moz-transform: scale(1.5);
+    /* FF */
+    -webkit-transform: scale(1.5);
+    /* Safari and Chrome */
+    -o-transform: scale(1.5);
+    /* Opera */
+    transform: scale(1.5);
+    padding: 5px;
+}
+
+.episodeSubscriptionDiv .episodeSubscriptionText {
+    flex-basis: 90%;
+    margin: 0;
+}
+
 .episodeCard .episodeViewNowButton {
+    background-color: #433699;
+    color: white;
     padding: 0.6em;
     border-radius: 1em;
     border: none;
+    text-decoration: none;
+}
+
+.episodeCard .episodeViewNowButton:hover {
+    background-color: #594f99;
 }
 
 
@@ -284,7 +413,7 @@ footer {
         width: 100%;
     }
     .episodeCard .episodeViewNowButton {
-        margin-top: auto !important;
+        /* margin-top: auto !important; */
     }
     /* Fin body */
     /* Inicio footer */
@@ -375,7 +504,7 @@ footer {
         width: 100%;
     }
     .episodeCard .episodeViewNowButton {
-        margin-top: auto !important;
+        /* margin-top: auto !important; */
     }
     /* Fin body */
     /* Inicio footer */

@@ -73,6 +73,7 @@
                                             <div class="mb-3">
                                                 <label for="inputLoginPassword" class="form-label">Contraseña</label>
                                                 <input type="password" class="form-control" id="inputLoginPassword">
+                                                <div id="authErrors" class="form-text text-danger"></div>
                                             </div>
                                         </form>
                                     </div>
@@ -116,6 +117,7 @@
                                             <div class="mb-3">
                                                 <label for="inputRegisterPassword2" class="form-label">Contraseña</label>
                                                 <input type="password" class="form-control" id="inputRegisterPassword2">
+                                                <div id="registerErrors" class="form-text text-danger"></div>
                                             </div>
                                         </form>
                                     </div>
@@ -135,8 +137,8 @@
                     </li>
                 </ul>
                 <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Buscar</button>
+                    <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" value="Buscar..." disabled>
+                    <button class="btn btn-outline-success" type="submit" disabled>Buscar</button>
                 </form>
             </div>
 
@@ -169,12 +171,6 @@
         </div>
     </main>
     <!-- FOOTER -->
-
-    <!-- <footer class="d-flex flex-column align-items-center py-4 mt-5 bg-dark my-0">
-
-
-        <p class="m-0">Proyecto desarrollado por <b> Abigael Heredia Feliz</b></p>
-    </footer> -->
 
     <footer>
         <div class="container">
@@ -216,8 +212,8 @@
 
                 <!-- Términos y licencias -->
                 <section class="my-politics col-12 col-md-4 d-flex flex-column mb-4">
-                    <a href="licenses/privacidad.html" class="mb-4" target="_blank" rel="noopener noreferrer">Política de privacidad</a>
-                    <a href="licenses/licenses.html" target="_blank" rel="noopener noreferrer">Terminos y Licencias de terceros</a>
+                    <a href="https://abigaelheredia.es/licenses/privacidad.html" class="mb-4" target="_blank" rel="noopener noreferrer">Política de privacidad</a>
+                    <a href="https://abigaelheredia.es/licenses/licenses.html" target="_blank" rel="noopener noreferrer">Terminos y Licencias de terceros</a>
                 </section>
             </div>
         </div>
