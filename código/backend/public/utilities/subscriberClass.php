@@ -9,6 +9,7 @@ class Subscriber {
     private $firestore_manager;
     private $conversor;
     private $notifier;
+    private $topics = ['http://feeds.feedburner.com/crunchyroll/rss/anime',''];
 
     public function __construct() {
         $now = getdate();
@@ -20,7 +21,34 @@ class Subscriber {
         $this->set_log("\n Inicio nueva interacción con el subscriptor [ $this->date ] : \n");
 
         if( $_GET != null){
-            $this->verify_subscription();
+
+            //  Si es de algún RSS registrado en $this->topics
+            //  proceder
+            if (in_array($_GET['hub_topic'], $this->topics)) {
+                
+                if ($_GET['hub_mode'] === 'subscribe') {
+                    // Control de peticiones de subscription
+                    $this->verify_subscription();
+
+                } else if ($_GET['hub_mode'] === 'unsubscribe') {
+                    // Control de peticiones de unsubscribe
+                    
+                    // Descomentar las 2 líneas de código siguientes para habilitar el unsubscribe
+                    // Y comentar la última de este bloque
+                    
+                    //$this->verify_subscription();
+                    //$this->return_Error();
+
+                    $this->return_Error();
+
+                }
+
+
+            } else {
+                // echo $_GET['hub_topic'].' was not in topics array.';
+                $this->return_Error();
+            }
+
         
         } else {
             $this->process_new_feed_content();   
@@ -33,7 +61,8 @@ class Subscriber {
     public function verify_subscription(){
         // Do this to verify subscribe intent (working)
         echo($_GET["hub_challenge"]);
-        $this->set_log("\nHubo un nuevo intento de verificación de subscripción: \n");
+        $this->set_log("\nHubo un nuevo intento de verificación de subscripción. \n");
+
     }
 
     public function process_new_feed_content() {
@@ -78,7 +107,7 @@ class Subscriber {
     }
 
     private function set_log($string_to_log) {
-        $file = fopen($this->log_file, "w") or die("Unable to open file!");
+        $file = fopen($this->log_file, "a") or die("Unable to open file!");
         fwrite($file, $string_to_log);
         fclose($file);
     }
