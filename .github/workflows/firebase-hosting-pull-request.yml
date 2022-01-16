@@ -14,3 +14,4 @@ jobs:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_MY_ANIME_499F8 }}'
           projectId: my-anime-499f8
+          entryPoint: "./código/frontend"
