@@ -11,6 +11,7 @@ class Conversor {
     protected $prepared_xml_string;
     protected $formated_xml_string;
     protected $outputFile = "./receivedFeeds/feedConverted.json";
+    protected $log_file = "./logs/conversor.log";
 
     public function __construct($xml_string) {
         $this->prepared_xml_string = $this->prepare_xml_string($xml_string);
@@ -67,9 +68,9 @@ class Conversor {
 
     private function prepare_xml_string($xml_string) {
         // Replace "/><"   for  "/>\n<"
-        $patrón = '/\/></';
-        $sustitución = '/>\n<';
-        return preg_replace($patrón, $sustitución, $xml_string);
+        $patron = '/\/></';
+        $sustitucion = '/>\n<';
+        return preg_replace($patron, $sustitucion, $xml_string);
 
     }
 
@@ -156,6 +157,12 @@ class Conversor {
 
         }
         
+    }
+
+    protected function set_log($string_to_log) {
+        $file = fopen($this->log_file, "a") or die("Unable to open file!");
+        fwrite($file, $string_to_log);
+        fclose($file);
     }
 
 }

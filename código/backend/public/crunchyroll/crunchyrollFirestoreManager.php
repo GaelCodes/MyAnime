@@ -12,8 +12,17 @@ class CrunchyrollFirestoreManager extends FirestoreManager {
 
     public function upload_data($array_from_xml) {
         $array_episodes = $array_from_xml["channel"]["item"];
+        $multipleEpisodes = true;
 
-        foreach ($array_episodes as $episode) {
+        foreach ($array_episodes as $key => $episode) {
+
+            if (! is_numeric($key)) {
+                // Si el índice no es numérico el array $array_episodes 
+                // contiene un único episodio
+                $multipleEpisodes = false;
+                $episode = $array_episodes;
+            }
+
             $episodeRef = $this->db->collection('animes/'.$episode['crunchyrollSeriesTitle'].'/versions/'.$episode['version'].'/episodes')->document('Episode '.$episode['crunchyrollEpisodeNumber']);
             
             try {
@@ -84,6 +93,12 @@ class CrunchyrollFirestoreManager extends FirestoreManager {
                 // TODO: Desarrollar método set_log en clase padre
                 //$this->set_log('Added data to the episode document in the episodes collection of the anime version.' . PHP_EOL);
 
+            }
+
+            if (! $multipleEpisodes) {
+                // Si no son varios episodios
+                // Ejecutar solo una vez, ya que si no se ejecutará tantas veces como atributos tenga el episodio
+                break;
             }
 
 
