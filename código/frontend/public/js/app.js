@@ -790,15 +790,18 @@ class EpisodeView {
         this.episodeCard.querySelector('.episodeNumber').innerText = 'Episodio ' + episode.number;
 
         // Subtitles y dates
-        for (let i = 0; i < episode.subtitles.length; i++) {
-            const subtitle = episode.subtitles[i];
+        if (episode.subtitles) {
+            for (let i = 0; i < episode.subtitles.length; i++) {
+                const subtitle = episode.subtitles[i];
 
-            let episodeSubtitle = document.createElement('li');
-            episodeSubtitle.classList.add('episodeSubtitle');
-            episodeSubtitle.innerText = subtitle;
+                let episodeSubtitle = document.createElement('li');
+                episodeSubtitle.classList.add('episodeSubtitle');
+                episodeSubtitle.innerText = subtitle;
 
-            this.episodeCard.querySelector('.episodeSubtitles').append(episodeSubtitle);
+                this.episodeCard.querySelector('.episodeSubtitles').append(episodeSubtitle);
+            }
         }
+
         this.episodeCard.querySelector('.episodePremiumPubDate').innerText = episode.premiumPubDate.toLocaleString();
         this.episodeCard.querySelector('.episodeFreePubDate').innerText = episode.freePubDate.toLocaleString();
 
@@ -865,15 +868,18 @@ class EpisodeView {
 
         // Subtitles y dates
         this.episodeCard.querySelector('.episodeSubtitles').innerHTML = '';
-        for (let i = 0; i < episode.subtitles.length; i++) {
-            const subtitle = episode.subtitles[i];
+        if (episode.subtitles) {
+            for (let i = 0; i < episode.subtitles.length; i++) {
+                const subtitle = episode.subtitles[i];
 
-            let episodeSubtitle = document.createElement('li');
-            episodeSubtitle.classList.add('episodeSubtitle');
-            episodeSubtitle.innerText = subtitle;
+                let episodeSubtitle = document.createElement('li');
+                episodeSubtitle.classList.add('episodeSubtitle');
+                episodeSubtitle.innerText = subtitle;
 
-            this.episodeCard.querySelector('.episodeSubtitles').append(episodeSubtitle);
+                this.episodeCard.querySelector('.episodeSubtitles').append(episodeSubtitle);
+            }
         }
+
         this.episodeCard.querySelector('.episodePremiumPubDate').innerText = episode.premiumPubDate.toLocaleString();
         this.episodeCard.querySelector('.episodeFreePubDate').innerText = episode.freePubDate.toLocaleString();
 
