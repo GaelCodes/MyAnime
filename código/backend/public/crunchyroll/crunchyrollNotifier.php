@@ -9,7 +9,7 @@ class CrunchyrollNotifier extends Notifier {
     }
 
     
-    private function prepare_email($subscriber_email, $episode) {
+    protected function prepare_email($subscriber_email, $episode) {
         $prepared_email = $this->default_email;
 
         $prepared_email['headers']['To'] = $subscriber_email;
