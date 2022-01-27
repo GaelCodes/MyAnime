@@ -3,9 +3,9 @@ require_once 'Mail.php';
 
 class Notifier {
 
-    private $log_file = './logs/notifier.log';
+    protected $log_file = './logs/notifier.log';
 
-    private $default_email = [
+    protected $default_email = [
         'headers' => [
             'To' => 'abigael-hf@hotmail.com',
             'From' =>  'My Anime <info@abigaelheredia.es>',
@@ -34,9 +34,9 @@ class Notifier {
         '
     ];
 
-    private $configuration = [];
+    protected $configuration = [];
 
-    private $smtp;
+    protected $smtp;
 
     public function __construct() {
 
@@ -62,7 +62,7 @@ class Notifier {
         }     
     }
 
-    private function prepare_email($subscriber_email, $episode) {
+    protected function prepare_email($subscriber_email, $episode) {
         $prepared_email = $this->default_email;
 
         $prepared_email['headers']['To'] = $subscriber_email;
@@ -75,7 +75,7 @@ class Notifier {
         
     }
 
-    private function send_email($email) {
+    protected function send_email($email) {
         $result = $this->smtp->send($email['headers']['To'], $email['headers'], $email['body']);
 
         if (PEAR::isError($result)) {
@@ -87,7 +87,7 @@ class Notifier {
         }
     }
 
-    private function set_log($string_to_log) {
+    protected function set_log($string_to_log) {
         $file = fopen($this->log_file, "w") or die("Unable to open file!");
         fwrite($file, $string_to_log);
         fclose($file);

@@ -12,8 +12,8 @@ class CrunchyrollConversor extends Conversor {
     public function convert_to_json() {
         parent::convert_to_json();
 
-        $this->generateVersion();
         $this->generateLanguage();
+        $this->generateVersion();
         $this->generateSubtitles();
     }
 
@@ -28,12 +28,21 @@ class CrunchyrollConversor extends Conversor {
             if ( is_numeric($key) ) {
                 // Si la clave es de tipo numérico significa que hay varios items
                 # code...
-                // La agrupación del patrón que contendrá el nombre de la versión será el 1
-                // 
-                // en Platinum End (German Dub) - Episode 8 - Symbol of Promise
-                // la versión resulta ser Platinum End (German Dub)
-                preg_match($this->version_pattern,$episode["title"],$matches);
-                $episode["version"] = $matches[1];
+                // La versión se obtendrá a partir del contenido de crunchyrollSeriesTitle y
+            // concatenado por el idioma y la palabra Dub entre paréntesis en caso de ser un doblaje
+            //
+            // en Attack on Titan Final Season - Episode 78 - Two Brothers
+            // la versión resulta ser Attack on Titan
+            //
+            // en Attack on Titan Final Season (Spanish Dub) - Episode 78 - Two Brothers
+            // la versión resulta ser Attack on Titan (Spanish Dub)
+            
+            if ($episode["language"] != "Japanese") {
+                $episode["version"] = $episode["crunchyrollSeriesTitle"]." (".$episode["language"]." Dub)";
+
+            } else {
+                $episode["version"] = $episode["crunchyrollSeriesTitle"];
+            }
 
 
             } else {
@@ -52,13 +61,21 @@ class CrunchyrollConversor extends Conversor {
             // y no varios arrays con los datos de diferentes episodios
             $episode = &$episodesArray;
             
-            // La agrupación del patrón que contendrá el nombre de la versión será el 1
-            // 
-            // en Platinum End (German Dub) - Episode 8 - Symbol of Promise
-            // la versión resulta ser Platinum End (German Dub)
+            // La versión se obtendrá a partir del contenido de crunchyrollSeriesTitle y
+            // concatenado por el idioma y la palabra Dub entre paréntesis en caso de ser un doblaje
+            //
+            // en Attack on Titan Final Season - Episode 78 - Two Brothers
+            // la versión resulta ser Attack on Titan
+            //
+            // en Attack on Titan Final Season (Spanish Dub) - Episode 78 - Two Brothers
+            // la versión resulta ser Attack on Titan (Spanish Dub)
             
-            preg_match($this->version_pattern,$episode["title"],$matches);
-            $episode["version"] = $matches[1];
+            if ($episode["language"] != "Japanese") {
+                $episode["version"] = $episode["crunchyrollSeriesTitle"]." (".$episode["language"]." Dub)";
+
+            } else {
+                $episode["version"] = $episode["crunchyrollSeriesTitle"];
+            }
         }
         
         unset($episode); // rompe la referencia con el último elemento

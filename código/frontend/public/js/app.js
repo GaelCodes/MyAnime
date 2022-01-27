@@ -1080,7 +1080,7 @@ class UserController {
         // Control del estado de la sesión
         UserController.controlLoginStatus();
 
-        // Login
+        // Elementos y eventos del Login
         UserController.showLoginModalButton = document.getElementById('showLoginModalButton');
         UserController.loginModal = document.getElementById('loginModal');
         UserController.loginForm = document.getElementById('loginForm');
@@ -1091,7 +1091,7 @@ class UserController {
         UserController.loginModal.addEventListener('keyup', UserController.logIn);
         UserController.loginButton.addEventListener('click', UserController.logIn);
 
-        // Register
+        // Elementos y eventos del Register
 
         UserController.showRegisterModalButton = document.getElementById('showRegisterModalButton');
         UserController.registerModal = document.getElementById('registerModal');
@@ -1104,7 +1104,7 @@ class UserController {
         UserController.registerModal.addEventListener('keyup', UserController.register);
         UserController.registerButton.addEventListener('click', UserController.register);
 
-        // Logout
+        // Elementos y eventos del Logout
         UserController.logoutButton = document.getElementById('logoutButton');
         UserController.logoutButton.addEventListener('click', UserController.logOut);
     }
