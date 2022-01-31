@@ -44,35 +44,28 @@ Estos vienen adecuadamente recogidos en el documento de Especificación de Requi
 
 ## <p align="center"> Diseño </p>
 
-[
+
 ### <p align="left"> Diseño de la topología de Red del sistema </p>
-Para realizar el diseño de la topología de Red del sistema se ha tenido en cuenta los datos recopilados durante el análisis. Esto ha resultado en el Esquema Topológico de red del Sistema.pdf
-
-]
+Para realizar el diseño de la topología de Red del sistema se ha tenido en cuenta los datos recopilados durante el análisis. Esto ha resultado en el [Esquema de red de la aplicación.pdf](documentación\documentación%20del%20producto\documentación%20del%20sistema\documentación%20del%20diseño\Esquema%20de%20red%20de%20la%20aplicación.pdf)
 
 
-
-[
 ### <p align="left"> Diseño de la BBDD </p>
-Para realizar el diseño de la BBDD se ha tenido en cuenta los datos recopilados durante el análisis. Esto ha resultado en el Diagrama entidad-relación.pdf y en su respectivo Modelo relacional.pdf
+Para realizar el diseño de la BBDD se ha tenido en cuenta los datos recopilados durante el análisis. También se ha tenido en cuenta los datos que proporciona Crunchyroll y las futuras posibles fuentes en sus canales RSS. 
+Esto ha resultado en el diagrama [Esquema de base de datos.pdf](documentación\documentación%20del%20producto\documentación%20del%20sistema\documentación%20del%20diseño\Esquema%20de%20base%20de%20datos.pdf)
 
-]
-
-
-[
 
 ### <p align="left"> Diseño del código Backend </p>
-Para realizar el diseño del código del Backend se ha tenido en cuenta los datos recopilados durante el análisis y los diagramas de secuencia proporcionados por los ingenieros. Esto ha resultado en el Diagrama de clases del backend.pdf
+Para realizar el diseño del código del Backend se ha tenido en cuenta los datos recopilados durante el análisis y el [Diagrama de secuencia - backend.pdf](documentación\documentación%20del%20producto\documentación%20del%20sistema\documentación%20del%20diseño\Diagrama%20de%20secuencia%20-%20backend.pdf) proporcionado por los ingenieros. Esto ha resultado en el [Diagrama de clases del backend.pdf](D:\01-DesarrolloFrontend\01-Websites\01-Produccion\04-%20My-Anime\documentación\documentación%20del%20producto\documentación%20del%20sistema\documentación%20del%20diseño\Diagrama%20de%20clases%20backend.pdf)
 
-]
+
 
 [
 
 ### <p align="left"> Diseño del código Frontend </p>
-Para realizar el diseño del código del Frontend se ha tenido en cuenta los datos recopilados durante el análisis y los diagramas de casos de uso proporcionados por los ingenieros. Esto ha resultado en el Diagrama de clases del frontend.pdf en el cual se implementa el patrón de diseño X(eg. MVC) en el componente YYYY(eg. chat)
+Para realizar el diseño del código del Frontend se ha tenido en cuenta los datos recopilados durante el análisis y los diagramas de casos de uso; [Diagrama de casos de uso - usuarios no autentificados.pdf](documentación\documentación%20del%20producto\documentación%20del%20sistema\documentación%20del%20análisis\Diagrama%20de%20casos%20de%20uso%20-%20usuarios%20no%20autentificados.pdf) y [Diagrama de casos de uso - usuarios autentificados.pdf](documentación\documentación%20del%20producto\documentación%20del%20sistema\documentación%20del%20análisis\Diagrama%20de%20casos%20de%20uso%20-%20usuarios%20autentificados.pdf) proporcionados por los ingenieros. Esto ha resultado en el [Diagrama de clases del frontend.pdf](documentación\documentación%20del%20producto\documentación%20del%20sistema\documentación%20del%20diseño\Diagrama%20de%20clases%20frontend.pdf) en el cual se implementa el patrón de diseño MVC en los componentes episode y anime, además del patrón observer en el componente user.
 
 #### <p align="left"> Diseño UI </p>
-Para el desarrollo de la UI se han tenido en cuento los [diseños proporcionados por el diseñador.](https://genuine-lamps.com/es/android/1254-the-8-best-texting-apps-for-android.html)
+Para el desarrollo de la UI se han aplicado los diseños e instrucciones proporcionadas por los diseñadores:
 
 <div align="center">
     <img align="center" src="https://user-images.githubusercontent.com/59183512/144725133-8de7a385-947a-461f-ab3e-17b8f08d39f3.png" width="250">
