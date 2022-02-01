@@ -1,8 +1,8 @@
 # <p align="center"> - My-Anime - </p>
-##### <p align="center"> _Este documento forma parte de la documentación procedimental del proyecto_ </p>
+#### <p align="center"> _Este documento forma parte de la documentación procedimental del proyecto_ </p>
 ## <p align="center"> Contexto </p>
 
-Escenario; año 2022, el anime está en tendencia, cada vez hay más otakus del anime. Con la llegada de los servicios de streaming o VOH no es de extrañar que este suceso esté teniendo lugar. Sin embargo, hay una pega, con tantos y tan diversos servicios de streaming es difícil mantenerse informado sobre en qué plataforma emitirán qué anime, o en qué momento estará disponible el capítulo de tu anime favorito.
+Escenario; año 2022, el anime está en tendencia, cada vez hay más fanáticos del anime. Con la llegada de los servicios de streaming o VOH no es de extrañar que este suceso esté teniendo lugar. Sin embargo, hay una pega, con tantos y tan diversos servicios de streaming es difícil mantenerse informado sobre en qué plataforma emitirán qué anime, o en qué momento estará disponible el capítulo de tu anime favorito.
 
 Por esto, hoy, ahora más que nunca, es necesario el resurgimiento de una de las tecnologías que teníamos por olvidadas, RSS.
 
@@ -16,9 +16,9 @@ En una sesión con todos los integrantes del equipo de desarrollo se realizó un
 
 - Desarrollador 2: " Lo ideal sería que en lugar de estar el consumidor pendiente de si el contenido está disponible, que fuerase la plataforma la que lo avisara en cuanto el contenido esté listo. "
 
-- Desarrollador 3: " Señores, esto apunta a que tendremos que sacar polvo a nuestras antiguos documentos y volver y volver a aprender el protocolo RSS. ¡ Let's Go !  
+- Desarrollador 3: " Señores, esto apunta a que tendremos que sacar polvo a nuestras antiguos documentos y volver a aprender el protocolo RSS. ¡ Let's Go !  
     
-    Está claro todo indica que la solución es crear un lector RSS que permita a los seguidores del anime ver los últimos capítulos de anime agregados y en qué plataforma fueron agregados, además habrá que añadir un sistema de notificación vía email si el contenido es de su interés. "
+    Está claro todo indica que la solución es crear un lector RSS que permita a los seguidores del anime ver los últimos capítulos de anime agregados y en qué plataforma fueron agregados, además habrá que añadir un sistema de notificación vía email que les avise si el contenido es de su interés. "
 
 ### <p align="center"> Técnica de Análisis 2 - Desarrollo Conjunto de Aplicaciones </p>
 
@@ -30,9 +30,9 @@ Continuación del diálogo de la sesión del brainstorming pero con la idea ya o
 
 - Desarrollador 3: " No tan rápido mi querido amigo, hay que tener en cuenta el protocolo que usaremos para suscribirnos a los distintos canales RSS de las plataformas de anime. Lo más probable es que tengamos que implementar una lógica en nuestro backend que detone ciertas funciones... "
 
-- Desarrollador 2: "... e implementar lógica de backend en Firebase con un lenguaje que no sea node va a ser imposible, mmm...  Veo por donde vas, pero es no descarta que usemos Firebase para el frontend y la lógica de gestión de usuarios. "
+- Desarrollador 2: "... e implementar lógica de backend en Firebase con un lenguaje que no sea node va a ser imposible, mmm...  Veo por donde vas, pero eso no descarta que usemos Firebase para el frontend y la lógica de gestión de usuarios. "
 
-- Desarrollador 1: " Podríamos hacer nuevamente un entorno híbrido en el que frontend y backend se encuentran alojados en distintos servicios de alojamiento. Que sea el backend el que reaccione a los pingshot de los canales RSS y que interactue con el frontend a través de las suscripciones del frontend a las bases de datos de Firebase. 
+- Desarrollador 1: " Podríamos hacer nuevamente un entorno híbrido en el que frontend y backend se encuentran alojados en distintos servicios de alojamiento. Que sea el backend el que reaccione a los pingshot de los canales RSS y que interactue con la base de datos para almacenar el contenido de los canales RSS y notificar a los usuarios que les interese. 
 
     Por otro lado, necesitaríamos un sistema de envío de notificaciones vía email, un servidor de correos o un servicio similar, también saber qué usuarios están suscritos a las notificaciones y si están suscritos a todas o solamente a las de algunos animes en concreto. Necesitaremos almacenar en una base de datos los animes en emisión y los usuarios suscritos a ellos. "
 
@@ -59,7 +59,6 @@ Para realizar el diseño del código del Backend se ha tenido en cuenta los dato
 
 
 
-[
 
 ### <p align="left"> Diseño del código Frontend </p>
 Para realizar el diseño del código del Frontend se ha tenido en cuenta los datos recopilados durante el análisis y los diagramas de casos de uso; [Diagrama de casos de uso - usuarios no autentificados.pdf](documentación\documentación%20del%20producto\documentación%20del%20sistema\documentación%20del%20análisis\Diagrama%20de%20casos%20de%20uso%20-%20usuarios%20no%20autentificados.pdf) y [Diagrama de casos de uso - usuarios autentificados.pdf](documentación\documentación%20del%20producto\documentación%20del%20sistema\documentación%20del%20análisis\Diagrama%20de%20casos%20de%20uso%20-%20usuarios%20autentificados.pdf) proporcionados por los ingenieros. Esto ha resultado en el [Diagrama de clases del frontend.pdf](documentación\documentación%20del%20producto\documentación%20del%20sistema\documentación%20del%20diseño\Diagrama%20de%20clases%20frontend.pdf) en el cual se implementa el patrón de diseño MVC en los componentes episode y anime, además del patrón observer en el componente user.
@@ -67,24 +66,41 @@ Para realizar el diseño del código del Frontend se ha tenido en cuenta los dat
 #### <p align="left"> Diseño UI </p>
 Para el desarrollo de la UI se han aplicado los diseños e instrucciones proporcionadas por los diseñadores:
 
+<p align="center">Diseño 1 - Pantallas menores a 576px ▽</p>
 <div align="center">
-    <img align="center" src="https://user-images.githubusercontent.com/59183512/144725133-8de7a385-947a-461f-ab3e-17b8f08d39f3.png" width="250">
-    <img align="center" src="https://user-images.githubusercontent.com/59183512/144725133-8de7a385-947a-461f-ab3e-17b8f08d39f3.png" width="250">
-    <img align="center" src="https://user-images.githubusercontent.com/59183512/144725133-8de7a385-947a-461f-ab3e-17b8f08d39f3.png" width="250">
-    <img align="center" src="https://user-images.githubusercontent.com/59183512/144725133-8de7a385-947a-461f-ab3e-17b8f08d39f3.png" width="250">
+    <img align="center" src="documentación\documentación del producto\documentación del sistema\documentación del diseño\UI - 0 pantallas menores a 576px.png" width="500">
+</div>
+<br>
+<br>
+<p align="center">Diseño 2 - Pantallas entre 576px y 768px ▽</p>
+<div align="center">
+    <img align="center" src="documentación\documentación del producto\documentación del sistema\documentación del diseño\UI - 1 pantallas entre 576px y 768px.png" width="500">
+</div>
+<br>
+<br>
+<p align="center">Diseño 3 - Pantallas entre 768px y 992px ▽</p>
+<div align="center">
+    <img align="center" src="documentación\documentación del producto\documentación del sistema\documentación del diseño\UI - 2 pantallas entre 768px y 992px.png" width="500">
+</div>
+<br>
+<br>
+<p align="center">Diseño 4 - Pantallas entre 992px y 1200px ▽</p>
+<div align="center">
+    <img align="center" src="documentación\documentación del producto\documentación del sistema\documentación del diseño\UI - 3 pantallas entre 992px y 1200px.png" width="500">
+</div>
+<br>
+<br>
+<p align="center">Diseño 5 - Pantallas mayores a 1200px ▽</p>
+<div align="center">
+    <img align="center" src="documentación\documentación del producto\documentación del sistema\documentación del diseño\UI - 4 pantallas mayores a 1200px.png" width="500">
 </div>
 
-<p align="center">Diseño 1</p>
-
-]
 
 ## <p align="center"> Código </p>
-[ Toda la documentación relativa al código se encuentra adjunta al mismo en forma de comentarios ]
+ Toda la documentación relativa al [código](código) se encuentra adjunta al mismo en forma de comentarios.
 ## <p align="center"> Pruebas </p>
 
-[ Para este proyecto no se han realizado pruebas automáticas ]
-
-[ En este proyecto se han realizado pruebas automáticas. El objetivo y resultado de cada prueba viene debidamente documentado en el documento documentación\documentación del producto\documentación del sistema\documentación pruebas\Documento realización de pruebas.pdf   ]
+ Para este proyecto no se han realizado pruebas automáticas. Sin embargo, si que se han ejecutado los diferentes casos de uso en la versión alpha verificando que funcionan correctamente y alcanzando así la versión beta del proyecto.
 
 ## <p align="center"> Documentación </p>
 
