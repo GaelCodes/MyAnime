@@ -42,26 +42,34 @@ Continuación del diálogo de la sesión del brainstorming pero con la idea ya o
 Tras la aplicación de las sucesivas técnicas de análisis se han concretado los requisitos funcionales y no funcionales del software.
 Estos vienen adecuadamente recogidos en el documento de Especificación de Requisitos del Software, [ERS.pdf](documentación\documentación%20del%20producto\documentación%20del%20sistema\documentación%20análisis\ERS.pdf).
 
+Además, tras el proceso de investigación se han creado 2 diagramas que explican detalladamente el funcionamiento del protocolo RSS, por un lado desde el punto de vista del sitio que publica o desea publicar contenido en un canal RSS ([Understanding RSS Diagram - For Publishers.pdf](documentación\documentación%20procedimental\Understanding%20RSS%20Diagram%20-%20For%20Publishers.pdf)), por otro lado, desde el punto de vista de webs/aplicaciones o usuarios que quieran leer/mantenerse informado o hacer uso de los canales RSS de las webs que implementen esta tecnología ([Understanding RSS Diagram - For Consumers.pdf](documentación\documentación%20procedimental\Understanding%20RSS%20Diagram%20-%20For%20Consumers.pdf)).
+
 ## <p align="center"> Diseño </p>
 
 
 ### <p align="left"> Diseño de la topología de Red del sistema </p>
 Para realizar el diseño de la topología de Red del sistema se ha tenido en cuenta los datos recopilados durante el análisis. Esto ha resultado en el [Esquema de red de la aplicación.pdf](documentación\documentación%20del%20producto\documentación%20del%20sistema\documentación%20del%20diseño\Esquema%20de%20red%20de%20la%20aplicación.pdf)
 
+<br>
+<br>
 
 ### <p align="left"> Diseño de la BBDD </p>
 Para realizar el diseño de la BBDD se ha tenido en cuenta los datos recopilados durante el análisis. También se ha tenido en cuenta los datos que proporciona Crunchyroll y las futuras posibles fuentes en sus canales RSS. 
 Esto ha resultado en el diagrama [Esquema de base de datos.pdf](documentación\documentación%20del%20producto\documentación%20del%20sistema\documentación%20del%20diseño\Esquema%20de%20base%20de%20datos.pdf)
 
+<br>
+<br>
 
 ### <p align="left"> Diseño del código Backend </p>
 Para realizar el diseño del código del Backend se ha tenido en cuenta los datos recopilados durante el análisis y el [Diagrama de secuencia - backend.pdf](documentación\documentación%20del%20producto\documentación%20del%20sistema\documentación%20del%20diseño\Diagrama%20de%20secuencia%20-%20backend.pdf) proporcionado por los ingenieros. Esto ha resultado en el [Diagrama de clases del backend.pdf](D:\01-DesarrolloFrontend\01-Websites\01-Produccion\04-%20My-Anime\documentación\documentación%20del%20producto\documentación%20del%20sistema\documentación%20del%20diseño\Diagrama%20de%20clases%20backend.pdf)
 
-
-
+<br>
+<br>
 
 ### <p align="left"> Diseño del código Frontend </p>
 Para realizar el diseño del código del Frontend se ha tenido en cuenta los datos recopilados durante el análisis y los diagramas de casos de uso; [Diagrama de casos de uso - usuarios no autentificados.pdf](documentación\documentación%20del%20producto\documentación%20del%20sistema\documentación%20del%20análisis\Diagrama%20de%20casos%20de%20uso%20-%20usuarios%20no%20autentificados.pdf) y [Diagrama de casos de uso - usuarios autentificados.pdf](documentación\documentación%20del%20producto\documentación%20del%20sistema\documentación%20del%20análisis\Diagrama%20de%20casos%20de%20uso%20-%20usuarios%20autentificados.pdf) proporcionados por los ingenieros. Esto ha resultado en el [Diagrama de clases del frontend.pdf](documentación\documentación%20del%20producto\documentación%20del%20sistema\documentación%20del%20diseño\Diagrama%20de%20clases%20frontend.pdf) en el cual se implementa el patrón de diseño MVC en los componentes episode y anime, además del patrón observer en el componente user.
+
+Por otro lado, para comprender mejor el flujo de la aplicación en lo referente a la sesión del usuario se han desarrollado distintos diagramas de flujo: [Diagrama de flujo - Control de sesión.pdf](documentación\documentación%20del%20producto\documentación%20del%20sistema\documentación%20del%20diseño\Diagrama%20de%20flujo%20-%20Control%20de%20sesión.pdf), [Diagrama de flujo - Intento de inicio de sesión.pdf](documentación\documentación%20del%20producto\documentación%20del%20sistema\documentación%20del%20diseño\Diagrama%20de%20flujo%20-%20Intento%20de%20inicio%20de%20sesión.pdf), [Diagrama de flujo - Intento de registro.pdf](documentación\documentación%20del%20producto\documentación%20del%20sistema\documentación%20del%20diseño\Diagrama%20de%20flujo%20-%20Intento%20de%20registro.pdf), [Diagrama de flujo - Cerrar sesión.pdf](documentación\documentación%20del%20producto\documentación%20del%20sistema\documentación%20del%20diseño\Diagrama%20de%20flujo%20-%20Cerrar%20sesión.pdf) .
 
 #### <p align="left"> Diseño UI </p>
 Para el desarrollo de la UI se han aplicado los diseños e instrucciones proporcionadas por los diseñadores:
@@ -111,6 +119,27 @@ La documentación de este proyecto consta de los siguientes archivos:
         - [documentación del análisis](documentación\documentación%20del%20producto\documentación%20del%20sistema\documentación%20del%20análisis)
             - [ERS.pdf](documentación\documentación%20del%20producto\documentación%20del%20sistema\documentación%20análisis\ERS.pdf)
         - [documentación del diseño](documentación\documentación%20del%20producto\documentación%20del%20sistema\documentación%20del%20diseño)
+            
+            - [Diagrama de clases backend.pdf](documentación\documentación%20del%20producto\documentación%20del%20sistema\documentación%20del%20diseño\Diagrama%20de%20clases%20backend.pdf)
+            
+            
+            - [Diagrama de clases frontend.pdf](documentación\documentación%20del%20producto\documentación%20del%20sistema\documentación%20del%20diseño\Diagrama%20de%20clases%20frontend.pdf)
+
+            - [Diagrama de flujo - Cerrar sesión.pdf](documentación\documentación%20del%20producto\documentación%20del%20sistema\documentación%20del%20diseño\Diagrama%20de%20flujo%20-%20Cerrar%20sesión.pdf)
+
+            - [Diagrama de flujo - Control de sesión.pdf](documentación\documentación%20del%20producto\documentación%20del%20sistema\documentación%20del%20diseño\Diagrama%20de%20flujo%20-%20Control%20de%20sesión.pdf)
+
+            - [Diagrama de flujo - Intento de inicio de sesión.pdf](documentación\documentación%20del%20producto\documentación%20del%20sistema\documentación%20del%20diseño\Diagrama%20de%20flujo%20-%20Intento%20de%20inicio%20de%20sesión.pdf)
+
+            - [Diagrama de flujo - Intento de registro.pdf](documentación\documentación%20del%20producto\documentación%20del%20sistema\documentación%20del%20diseño\Diagrama%20de%20flujo%20-%20Intento%20de%20registro.pdf)
+
+            - [Diagrama de secuencia - backend.pdf](documentación\documentación%20del%20producto\documentación%20del%20sistema\documentación%20del%20diseño\Diagrama%20de%20secuencia%20-%20backend.pdf)
+
+            - [Diagrama de secuencia - frontend.pdf](documentación\documentación%20del%20producto\documentación%20del%20sistema\documentación%20del%20diseño\Diagrama%20de%20secuencia%20-%20frontend.pdf)
+
+            - [Esquema de base de datos.pdf](documentación\documentación%20del%20producto\documentación%20del%20sistema\documentación%20del%20diseño\Esquema%20de%20base%20de%20datos.pdf)
+
+            - [Esquema de red de la aplicación.pdf](documentación\documentación%20del%20producto\documentación%20del%20sistema\documentación%20del%20diseño\Esquema%20de%20red%20de%20la%20aplicación.pdf)
 
         - [documentación del código](documentación\documentación%20del%20producto\documentación%20del%20sistema\documentación%20del%20código)
         
@@ -127,3 +156,5 @@ La documentación de este proyecto consta de los siguientes archivos:
 
 - [documentación procedimental](documentación\documentación%20procedimental)
     - [README.md](documentación\documentación%20procedimental\README.md)
+    - [Understanding RSS Diagram - For Publishers.pdf](documentación\documentación%20procedimental\Understanding%20RSS%20Diagram%20-%20For%20Publishers.pdf)
+    - [Understanding RSS Diagram - For Consumers.pdf](documentación\documentación%20procedimental\Understanding%20RSS%20Diagram%20-%20For%20Consumers.pdf)
