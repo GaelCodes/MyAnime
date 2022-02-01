@@ -2,9 +2,9 @@
 #### <p align="center"> _Este documento forma parte de la documentación procedimental del proyecto_ </p>
 ## <p align="center"> Contexto </p>
 
-Escenario; año 2022, el anime está en tendencia, cada vez hay más fanáticos del anime. Con la llegada de los servicios de streaming o VOH no es de extrañar que este suceso esté teniendo lugar. Sin embargo, hay una pega, con tantos y tan diversos servicios de streaming es difícil mantenerse informado sobre en qué plataforma emitirán qué anime, o en qué momento estará disponible el capítulo de tu anime favorito.
+>Año 2022, el anime está en tendencia, cada vez hay más fanáticos del anime. Con la llegada de los servicios de streaming o VOH no es de extrañar que este suceso esté teniendo lugar. Sin embargo, hay una pega, con tantos y tan diversos servicios de streaming es difícil mantenerse informado sobre en qué plataforma emitirán qué anime, o en qué momento estará disponible el capítulo de tu anime favorito.
 
-Por esto, hoy, ahora más que nunca, es necesario el resurgimiento de una de las tecnologías que teníamos por olvidadas, RSS.
+Por esto, hoy, ahora más que nunca, es necesario el resurgimiento de una de las tecnologías que teníamos por olvidadas, **RSS**.
 
 
 ## <p align="center"> Análisis </p>
@@ -12,29 +12,37 @@ Por esto, hoy, ahora más que nunca, es necesario el resurgimiento de una de las
 ### <p align="center"> Técnica de Análisis 1 - Brainstorming </p>
 
 En una sesión con todos los integrantes del equipo de desarrollo se realizó una lluvia de ideas para determinar las características del proyecto, dialogo:
-- Desarrollador 1: " Entiendo, el problema es que los usuarios se tienen que conectar a las plataformas de streaming y navegar a través de ellas para saber si está disponible algún contenido de su interés. "
+- Desarrollador 1: 
+> Entiendo, el problema es que los usuarios se tienen que conectar a las plataformas de streaming y navegar a través de ellas para saber si está disponible algún contenido de su interés.
 
-- Desarrollador 2: " Lo ideal sería que en lugar de estar el consumidor pendiente de si el contenido está disponible, que fuerase la plataforma la que lo avisara en cuanto el contenido esté listo. "
+- Desarrollador 2:
+> Lo ideal sería que en lugar de estar el consumidor pendiente de si el contenido está disponible, que fuerase la plataforma la que lo avisara en cuanto el contenido esté listo. 
 
-- Desarrollador 3: " Señores, esto apunta a que tendremos que sacar polvo a nuestras antiguos documentos y volver a aprender el protocolo RSS. ¡ Let's Go !  
-    
-    Está claro todo indica que la solución es crear un lector RSS que permita a los seguidores del anime ver los últimos capítulos de anime agregados y en qué plataforma fueron agregados, además habrá que añadir un sistema de notificación vía email que les avise si el contenido es de su interés. "
+- Desarrollador 3:
+> Señores, esto apunta a que tendremos que sacar polvo a nuestras antiguos documentos y volver a aprender el protocolo RSS. ¡ Let's Go !
+
+> Está claro, todo indica que la solución es crear un lector RSS que permita a los seguidores del anime ver los últimos capítulos de anime agregados y en qué plataforma fueron agregados, además habrá que añadir un sistema de notificación vía email que les avise si el contenido es de su interés.
 
 ### <p align="center"> Técnica de Análisis 2 - Desarrollo Conjunto de Aplicaciones </p>
 
 Continuación del diálogo de la sesión del brainstorming pero con la idea ya obtenida a partir de la última sesión, un lector RSS:
 
-- Desarrollador 1: " De acuerdo, necesitaremos una aplicación con una base de datos de usuarios, por lo tanto, deberá de tener su correspondiente registro y login de usuarios. "
+- Desarrollador 1: 
+> De acuerdo, necesitaremos una aplicación con una base de datos de usuarios, por lo tanto, deberá de tener su correspondiente registro y login de usuarios.
 
-- Desarrollador 2: " Bien, la integración más rápida, eficaz y sencilla para ello es implementar la solución que nos proporciona Firebase con Firebase Authentication. "
+- Desarrollador 2:
+> Bien, la integración más rápida, eficaz y sencilla para ello es implementar la solución que nos proporciona Firebase con Firebase Authentication.
 
-- Desarrollador 3: " No tan rápido mi querido amigo, hay que tener en cuenta el protocolo que usaremos para suscribirnos a los distintos canales RSS de las plataformas de anime. Lo más probable es que tengamos que implementar una lógica en nuestro backend que detone ciertas funciones... "
+- Desarrollador 3:
+> No tan rápido mi querido amigo, hay que tener en cuenta el protocolo que usaremos para suscribirnos a los distintos canales RSS de las plataformas de anime. Lo más probable es que tengamos que implementar una lógica en nuestro backend que detone ciertas funciones...
 
-- Desarrollador 2: "... e implementar lógica de backend en Firebase con un lenguaje que no sea node va a ser imposible, mmm...  Veo por donde vas, pero eso no descarta que usemos Firebase para el frontend y la lógica de gestión de usuarios. "
+- Desarrollador 2:
+> ... e implementar lógica de backend en Firebase con un lenguaje que no sea node va a ser imposible, mmm...  Veo por donde vas, pero eso no descarta que usemos Firebase para el frontend y la lógica de gestión de usuarios.
 
-- Desarrollador 1: " Podríamos hacer nuevamente un entorno híbrido en el que frontend y backend se encuentran alojados en distintos servicios de alojamiento. Que sea el backend el que reaccione a los pingshot de los canales RSS y que interactue con la base de datos para almacenar el contenido de los canales RSS y notificar a los usuarios que les interese. 
+- Desarrollador 1: 
+> Podríamos hacer nuevamente un entorno híbrido en el que frontend y backend se encuentran alojados en distintos servicios de alojamiento. Que sea el backend el que reaccione a los pingshot de los canales RSS y que interactue con la base de datos para almacenar el contenido de los canales RSS y notificar a los usuarios que les interese. 
 
-    Por otro lado, necesitaríamos un sistema de envío de notificaciones vía email, un servidor de correos o un servicio similar, también saber qué usuarios están suscritos a las notificaciones y si están suscritos a todas o solamente a las de algunos animes en concreto. Necesitaremos almacenar en una base de datos los animes en emisión y los usuarios suscritos a ellos. "
+> Por otro lado, necesitaríamos un sistema de envío de notificaciones vía email, un servidor de correos o un servicio similar, también saber qué usuarios están suscritos a las notificaciones y si están suscritos a todas o solamente a las de algunos animes en concreto. Necesitaremos almacenar en una base de datos los animes en emisión y los usuarios suscritos a ellos. "
 
 
 
