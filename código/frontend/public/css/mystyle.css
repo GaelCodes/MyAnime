@@ -9,6 +9,21 @@ nav {
     box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.82);
 }
 
+nav #logoBlock {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+
+/* #logoBlock #logoImg {} */
+
+#logoBlock #logoCatchyPhrase {
+    margin: 0;
+    color: gray;
+    white-space: normal;
+    margin-top: -20px;
+}
+
 nav .nav-link {
     font-weight: bolder;
 }
