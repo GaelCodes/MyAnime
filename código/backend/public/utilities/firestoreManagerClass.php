@@ -36,6 +36,7 @@ class FirestoreManager  {
     private function create_db_client(string $projectId) {
         // Create the Cloud Firestore client
         $this->db = new FirestoreClient([
+            'keyFilePath' => $_ENV['KEY_FILE_PATH'],
             'projectId' => $projectId
         ]);
     }
