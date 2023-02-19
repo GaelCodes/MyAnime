@@ -106,7 +106,7 @@ class Subscriber {
         fclose($file);
     }
 
-    private function set_log($string_to_log) {
+    protected function set_log($string_to_log) {
         $file = fopen($this->log_file, "a") or die("Unable to open file!");
         fwrite($file, $string_to_log);
         fclose($file);

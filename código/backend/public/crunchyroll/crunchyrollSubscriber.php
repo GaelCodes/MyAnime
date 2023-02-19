@@ -1,9 +1,9 @@
 <?php
 
 // // Block Only for development
-// require_once '../vendor/autoload.php'; 
-// $dotenv = Dotenv\Dotenv::createImmutable('./../');
-// $dotenv->safeLoad();
+require_once '../vendor/autoload.php'; 
+$dotenv = Dotenv\Dotenv::createImmutable('./../');
+$dotenv->safeLoad();
 // // Block Only for development
 require_once '../utilities/subscriberClass.php';
 
