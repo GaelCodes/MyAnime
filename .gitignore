@@ -1,5 +1,6 @@
+# Patterns Example 1 - negative regex
+# dir/*.txt
+# !dir/*_base.txt
 .env
 vendor
-logs
-receivedFeeds
-private
+my-anime-499f8-58fd600eef95.json

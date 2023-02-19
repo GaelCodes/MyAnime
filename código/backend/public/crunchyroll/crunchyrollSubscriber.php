@@ -2,7 +2,7 @@
 
 // // Block Only for development
 require_once '../vendor/autoload.php'; 
-$dotenv = Dotenv\Dotenv::createImmutable('./../');
+$dotenv = Dotenv\Dotenv::createImmutable('./../../private/');
 $dotenv->safeLoad();
 // // Block Only for development
 require_once '../utilities/subscriberClass.php';
