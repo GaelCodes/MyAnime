@@ -979,10 +979,14 @@ class EpisodeController {
         EpisodeController.episodes.sort(function(episodeA, episodeB) {
 
             // Los ordeno de más reciente a más antiguo
-            // 
+            //
+
+            if ((episodeA.model.premiumPubDate - episodeB.model.premiumPubDate) == 0)
+                return -(episodeA.model.number - episodeB.model.number);
+
             return -(episodeA.model.premiumPubDate - episodeB.model.premiumPubDate);
 
-        })
+        });
     }
 
     changeSubscription(event) {

@@ -1,0 +1,1 @@
+curl http://pubsubhubbub.appspot.com/ -d 'hub.topic=http://feeds.feedburner.com/crunchyroll/rss/anime&hub.callback=http://backend.my-anime.abigaelheredia.es/crunchyroll/crunchyrollSubscriber.php&hub.mode=subscribe'

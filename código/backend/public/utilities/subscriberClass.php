@@ -9,7 +9,10 @@ class Subscriber {
     private $firestore_manager;
     private $conversor;
     private $notifier;
-    private $topics = ['http://feeds.feedburner.com/crunchyroll/rss/anime',''];
+    private $topics = ['http://feeds.feedburner.com/crunchyroll/rss/anime',
+    'https://feeds.feedburner.com/crunchyroll/rss/anime?lang=esLA',
+    'http://feeds.feedburner.com/crunchyroll/rss/anime%3Flang%3DesLA',
+    ''];
 
     public function __construct() {
         $now = getdate();
